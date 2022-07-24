@@ -1,0 +1,100 @@
+.description_wrapper{
+    display: grid;
+    grid-template-areas:
+    'bb pb'
+    'ap ap'
+;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 380px;
+    height: 780px;
+}
+
+.buttons_block{
+    grid-area: bb;
+    border: 1px solid #ffffff;
+    border-radius: 2rem;
+    background-color: #131124;
+    margin: 1rem 0.5rem 1rem 1rem;
+}
+
+.top_menu {
+    padding: 0.5rem 12% 0.5rem 12%;
+
+}
+
+.top_menu button{
+    color: #fff;
+    font-size: 1.8rem;
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+    background-color: #096a85;
+    margin: 0.5rem
+}
+
+.top_menu button:hover{
+    color: #000;
+    font-size: 1.8rem;
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+    background-color: #fff;
+    margin: 0.2rem;
+}
+
+.add_status_block, .search_friends_block, .search_users_block{
+    display: grid;
+    color: white;
+    font-size: 1.8rem;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 2fr;
+    padding: 1rem;
+}
+
+.description_wrapper input{
+    width: 80%;
+    height: 3rem;
+    font-size: 1.4rem;
+    padding-left: 0.5rem;
+}
+
+.portfolio_block{
+    grid-area: pb;
+    border: 1px solid #ffffff;
+    border-radius: 2rem;
+    background-color: #131124;
+    margin: 1rem 1rem 1rem 0.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 2rem;
+}
+
+.add_post_wrapper{
+    grid-area: ap;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.add_post_block{
+    text-align: center;
+}
+
+.add_post_wrapper textarea{
+    width: 95%;
+    height: 8rem;
+    border-radius: 2rem;
+    line-height: 7rem;
+    font-size: 2rem;
+}
+
+.add_post_button{
+    height: 3.8rem;
+    margin: 0.5rem auto 0.5rem 1.2rem;
+    width: 10rem;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+}
+
+.add_post_button:hover{
+    background-color: #3dc4db;
+    color: white;
+}

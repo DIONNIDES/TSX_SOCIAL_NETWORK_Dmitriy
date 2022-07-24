@@ -1,0 +1,39 @@
+.Navbar_wrapper{
+    grid-area: n;
+    background-color: #000;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.user_photo{
+    display: grid;
+    justify-items: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.Navbar_wrapper img{
+    width: 180px;
+    border-radius: 30%;
+}
+
+li{
+    list-style-type: none;
+}
+
+.nav_item{
+    text-decoration: none;
+    color: white;
+    line-height: 2em;
+    padding: 0.5rem;
+}
+
+.nav_item:hover{
+    background-color: #fff;
+    color: black;
+}
+
+.nav_item.ative{
+    color: #edc568;
+    background-color: red;
+}
+

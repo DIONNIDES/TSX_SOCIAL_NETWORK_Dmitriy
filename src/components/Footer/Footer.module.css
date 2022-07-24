@@ -1,0 +1,15 @@
+.Footer_wrapper{
+    display: grid;
+    grid-area: f;
+    background-color: #532287;
+    align-items: center;
+    justify-items: center;
+}
+
+.Footer_wrapper a{
+    text-decoration: none;
+    color: white;
+    line-height: 1.5rem;
+}
+
+

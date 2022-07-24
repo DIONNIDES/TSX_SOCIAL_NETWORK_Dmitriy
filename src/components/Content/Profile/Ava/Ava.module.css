@@ -1,0 +1,40 @@
+.ava_wrapper{
+    background-image: url(./../../../../asets/background_image2.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.ava_wrapper a img{
+    max-width: 360px;
+    padding: 5% 0 5% 10%;
+    border-radius: 50%;
+}
+
+.main_description_wrapper{
+    padding: 40% 10% 5% 0;
+}
+
+.main_description{
+    background-color: #fff;
+    border-radius: 2rem;
+    text-align: center;
+    border: 2px solid black;
+
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.main_status p {
+    font-size: 2rem;
+}

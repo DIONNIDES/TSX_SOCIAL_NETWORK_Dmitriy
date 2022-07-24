@@ -1,0 +1,42 @@
+.post_wrapper{
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    padding-left: 1rem;
+}
+
+.user_post_ava img{
+    max-width: 10rem;
+}
+
+.user_post_description{
+    display: grid;
+    grid-template-areas:
+'pm lc'
+'pt lc';
+    grid-template-columns: max-content 10em;
+    color: white;
+}
+
+.post_message{
+    grid-area: pm;
+    font-size: 2rem;
+    padding-top: 2rem;
+}
+
+.post_time{
+    grid-area: pt;
+    font-size: 1.3rem;
+}
+
+.likes_count{
+    padding-left: 1rem;
+    grid-area: lc;
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    font-size: 1.3rem;
+    padding-top: 2rem;
+}
+
+.likes_count img{
+    max-width: 3rem;
+}
