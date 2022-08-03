@@ -22,7 +22,6 @@ export const Dialogs = (props: DialogsPropsType) => {
                         id={dialog.id} name={dialog.name}
                         lastName={dialog.lastName}
                         lastData={dialog.lastData}/>)}
-
             </div>
             <div className={styles.messages_container}>
                 {
