@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import {PostType} from './components/Content/Profile/MyPosts/Post/Post';
 import {UserInfoType} from './components/Content/Profile/Description/Description';
+import {DialogType} from './components/Content/Dialogs/Dialog/Dialog';
+import {message} from 'antd';
+import {MessageType} from './components/Content/Dialogs/Message/Message';
 
 
 let posts: Array<PostType>= [
@@ -20,7 +23,43 @@ let usersCharacteristics:Array<UserInfoType> =[
 
 ];
 
+let dialogs:Array<DialogType> = [
+    {id:1, name:'Dmitriy', lastName:'Kurgan', lastData:'20:00'},
+    {id:2, name:'Kolyan', lastName:'Poltorak', lastData:'20:00'},
+    {id:3, name:'Olga', lastName:'Lezhentseva', lastData:'20:00'},
+    {id:4, name:'Ivan', lastName:'Mamonov', lastData:'20:00'},
+    {id:5, name:'Artem', lastName:'Ryaboshapko', lastData:'20:00'},
+    {id:6, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:7, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:8, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:9, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:10, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:11, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:12, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:13, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:14, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+    {id:15, name:'Victor', lastName:'Pobeditel', lastData:'20:00'},
+];
+
+let messages:Array<MessageType> = [
+    {id:1, name:'Dmitriy', lastName:'Kurgan', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem' },
+    {id:2, name:'Kolyan', lastName:'Poltorak', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:3, name:'Olga', lastName:'Lezhentseva', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:4, name:'Ivan', lastName:'Mamonov', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:5, name:'Artem', lastName:'Ryaboshapko', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:6, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:7, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:8, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:9, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:10, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:11, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:12, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:13, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+    {id:14, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem loremm'},
+    {id:15, name:'Victor', lastName:'Pobeditel', lastData:'20:00', messageText:'lorem lorem lorem lorem lorem lorem lorem lorem lorem'},
+];
+
 ReactDOM.render(
-    <App posts={posts} usersCharacteristics={usersCharacteristics}/>,
+    <App posts={posts} usersCharacteristics={usersCharacteristics} dialogs={dialogs} messages={messages}/>,
   document.getElementById('root')
 );

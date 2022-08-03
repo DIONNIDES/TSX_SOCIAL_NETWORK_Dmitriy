@@ -32,8 +32,8 @@ li{
     color: black;
 }
 
-.nav_item.ative{
-    color: #edc568;
-    background-color: red;
+a.active{
+    background-color: #ffffff;
+    color: #131124;
 }
 

@@ -1,0 +1,50 @@
+.dialog_wrapper{
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 1px solid #ffffff;
+    border-radius: 1rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+.dialog_wrapper:hover{
+    background-color: #8cf3f5;
+    color: black;
+}
+
+a.active{
+    background-color: #88b3f7;
+}
+
+
+.dialog_ava_block img{
+    max-width: 100%;
+}
+
+.dialog_description_block{
+    display: grid;
+    grid-template-areas:
+    "dN dLD"
+    "DD DD";
+    grid-template-columns: 80% 20%;
+    grid-auto-rows: 1.5rem max-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+}
+
+.dialog_name{
+    grid-area: dN;
+}
+
+.dialog_last_data{
+    grid-area: dLD;
+}
+
+.dialog_description{
+    grid-area: DD;
+}

@@ -1,0 +1,61 @@
+.message_wrapper{
+    display: grid;
+    grid-template-columns: 6rem 1rem 1fr;
+    grid-template-rows: 6rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+.message_ava_block{
+    display: grid;
+    align-items: end;
+}
+
+.message_ava_block img{
+    max-width: 5rem;
+}
+
+.radius{
+    margin-top: 5rem;
+    width: 1rem;
+    height: 1rem;
+    background: radial-gradient(circle at 0 0, rgba(0,0,0, 1) 1rem, #8ac9ed 0) ;
+}
+
+.message_description_block{
+    display: grid;
+    grid-template-areas:
+    "dN dLD"
+    "DD DD";
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 1.5rem max-content;
+    padding-left: 1rem;
+    background-color: #8ac9ed;
+    border-radius: 1rem 1rem 1rem 0;
+    color: black;
+}
+
+.message_description_block:hover{
+    background-color: #7efcb9;
+}
+
+.message_name{
+    padding-top: 0.5rem;
+    grid-area: dN;
+}
+
+.message_last_data{
+    grid-area: dLD;
+    text-align: right;
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.message_description{
+    grid-area: DD;
+}

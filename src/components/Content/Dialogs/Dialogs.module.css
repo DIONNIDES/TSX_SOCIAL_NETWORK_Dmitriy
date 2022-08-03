@@ -1,0 +1,45 @@
+.dialogs_wrapper{
+    display: grid;
+    grid-template-areas:
+    "dD mC"
+    "dC mC";
+    grid-template-columns: 25rem 1fr ;
+    grid-template-rows: 10rem 1fr;
+    color: white;
+
+}
+h2{
+    font-size: 2rem;
+    text-align: center;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+
+.dialogs_description{
+    display: grid;
+    grid-area: dD;
+    justify-items: center;
+    align-items: center;
+}
+
+.dialogs_description input{
+    width: 90%;
+    height: 3rem;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+
+}
+
+.dialogs_container{
+    grid-area: dC;
+}
+
+.messages_container{
+    grid-area: mC;
+    border-left: 2px solid #fff;
+}
