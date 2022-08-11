@@ -1,22 +1,15 @@
-import React from 'react';
-import {inspect} from 'util';
+import React, {LegacyRef, RefObject} from 'react';
 import styles from './Description.module.css';
+import {UserInfoType} from '../../../../redux/store';
 
 
-type DescriptionPropsType={
+type DescriptionPropsType = {
     usersCharacteristics: Array<UserInfoType>;
-}
-export type UserInfoType= {
-    id: number;
-    name: string;
-    lastName: string;
-    education: string;
-    profession: string;
-    knowledges: string;
-    status: string;
+    addPost:(postText:string)=>void
 }
 
-export const Description = (props:DescriptionPropsType) => {
+export const Description = (props: DescriptionPropsType) => {
+
     return (
         <div className={styles.description_wrapper}>
             <div className={styles.buttons_block}>
@@ -44,13 +37,6 @@ export const Description = (props:DescriptionPropsType) => {
                 <p>Education: {props.usersCharacteristics[0].education}</p>
                 <p>Profession: {props.usersCharacteristics[0].profession}</p>
                 <p>Knowledges: {props.usersCharacteristics[0].knowledges}</p>
-            </div>
-            <div className={styles.add_post_wrapper}>
-                <div className={styles.add_post_block}>
-                    <h2>My posts:</h2>
-                    <textarea placeholder="Write you post..."/>
-                </div>
-                <button className={styles.add_post_button}>Add post</button>
             </div>
         </div>
     );

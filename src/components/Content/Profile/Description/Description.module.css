@@ -5,8 +5,8 @@
     'ap ap'
 ;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 380px;
-    height: 780px;
+    grid-template-rows: 1fr;
+    height: 400px;
 }
 
 .buttons_block{
@@ -66,35 +66,4 @@
     color: #fff;
     font-size: 1.5rem;
     padding: 2rem;
-}
-
-.add_post_wrapper{
-    grid-area: ap;
-    color: #fff;
-    font-size: 2rem;
-}
-
-.add_post_block{
-    text-align: center;
-}
-
-.add_post_wrapper textarea{
-    width: 95%;
-    height: 8rem;
-    border-radius: 2rem;
-    line-height: 7rem;
-    font-size: 2rem;
-}
-
-.add_post_button{
-    height: 3.8rem;
-    margin: 0.5rem auto 0.5rem 1.2rem;
-    width: 10rem;
-    font-size: 1.8rem;
-    border-radius: 1rem;
-}
-
-.add_post_button:hover{
-    background-color: #3dc4db;
-    color: white;
 }

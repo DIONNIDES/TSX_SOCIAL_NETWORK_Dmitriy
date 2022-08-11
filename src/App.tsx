@@ -4,10 +4,7 @@ import {Header} from './components/Header/Header';
 import {Navbar} from './components/Navbar/Navbar';
 import {Footer} from './components/Footer/Footer';
 import {Profile} from './components/Content/Profile/Profile';
-import {PostType} from './components/Content/Profile/MyPosts/Post/Post';
-import {UserInfoType} from './components/Content/Profile/Description/Description';
 import {Dialogs} from './components/Content/Dialogs/Dialogs';
-import {DialogType} from './components/Content/Dialogs/Dialog/Dialog';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {MyFriends} from './components/Content/MyFriends/MyFriends';
 import {MyProjects} from './components/Content/MyProjects/MyProjects';
@@ -16,14 +13,11 @@ import {MyMusic} from './components/Content/MyMusic/MyMusic';
 import {Settings} from './components/Content/Settings/Settings';
 import {Videos} from './components/Content/Videos/Videos';
 import {MyGroups} from './components/Content/MyGroups/MyGroups';
-import {MessageType} from './components/Content/Dialogs/Message/Message';
+import {StoreType} from './redux/store';
 
 
 type AppPropsType = {
-    posts: Array<PostType>;
-    usersCharacteristics: Array<UserInfoType>;
-    dialogs: Array<DialogType>;
-    messages: Array<MessageType>;
+    store:StoreType
 }
 
 
@@ -35,10 +29,15 @@ function App(props: AppPropsType) {
                 <Navbar/>
                 <div className={styles.Main_wrapper}>
                     <Route path="/profile" render={() => <Profile
-                        posts={props.posts}
-                        usersCharacteristics={props.usersCharacteristics}/>}/>
+                        profilePage={props.store.profilePage}
+                        addPost={props.store.addPost}
+                        updateNewPostText={props.store.updateNewPostText}
+                    />}/>
                     <Route path="/dialogs" render={() => <Dialogs
-                        dialogs={props.dialogs} messages={props.messages}/>}/>
+                        dialogsPage={props.store.dialogsPage}
+                        sendMessage={props.store.sendMessage}
+                        updateNewMessageText={props.store.updateNewMessageText}
+                    />}/>
                     <Route path="/friends" render={() => <MyFriends/>}/>
                     <Route path="/gallery" render={() => <Gallery/>}/>
                     <Route path="/videos" render={() => <Videos/>}/>
