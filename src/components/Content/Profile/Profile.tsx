@@ -7,7 +7,7 @@ import {ProfilePageType} from '../../../redux/store';
 
 type ProfilePropsType = {
     profilePage:ProfilePageType
-    addPost:(postText:string)=>void
+    addPost:()=>void
     updateNewPostText:(postText:string)=>void
 }
 

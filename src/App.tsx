@@ -13,7 +13,7 @@ import {MyMusic} from './components/Content/MyMusic/MyMusic';
 import {Settings} from './components/Content/Settings/Settings';
 import {Videos} from './components/Content/Videos/Videos';
 import {MyGroups} from './components/Content/MyGroups/MyGroups';
-import {StoreType} from './redux/store';
+import  {StoreType} from './redux/store';
 
 
 type AppPropsType = {
@@ -29,14 +29,14 @@ function App(props: AppPropsType) {
                 <Navbar/>
                 <div className={styles.Main_wrapper}>
                     <Route path="/profile" render={() => <Profile
-                        profilePage={props.store.profilePage}
-                        addPost={props.store.addPost}
-                        updateNewPostText={props.store.updateNewPostText}
+                        profilePage={props.store.getState().profilePage}
+                        addPost={props.store.addPost.bind(props.store)}
+                        updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                     />}/>
                     <Route path="/dialogs" render={() => <Dialogs
-                        dialogsPage={props.store.dialogsPage}
-                        sendMessage={props.store.sendMessage}
-                        updateNewMessageText={props.store.updateNewMessageText}
+                        dialogsPage={props.store.getState().dialogsPage}
+                        sendMessage={props.store.sendMessage.bind(props.store)}
+                        updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
                     />}/>
                     <Route path="/friends" render={() => <MyFriends/>}/>
                     <Route path="/gallery" render={() => <Gallery/>}/>

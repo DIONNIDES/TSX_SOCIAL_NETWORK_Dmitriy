@@ -6,41 +6,34 @@ import {DialogsPageType} from '../../../redux/store';
 
 type DialogsPropsType = {
     dialogsPage: DialogsPageType
-    sendMessage: (messageText: string) => void
+    sendMessage: () => void
     updateNewMessageText: (messageText: string) => void
 }
 
 
 export const Dialogs = (props: DialogsPropsType) => {
-    let newDialogElement = React.createRef<HTMLInputElement>();
+    let newMessagetext = props.dialogsPage.newMessageText;
     let newMessageElement = React.createRef<HTMLInputElement>();
-    let newMessageText = props.dialogsPage.newMessageText;
 
-    const searchDialog = () => {
-        let dialogName = newDialogElement.current?.value;
-        alert(dialogName);
-    }
-
-    const sendMessage = () => {
-        let messageText = newMessageElement.current?.value;
-        messageText && props.sendMessage(messageText);
-        props.updateNewMessageText('');
-    }
     const onMessageChange = () => {
-        let messageText = newMessageElement.current?.value;
-        messageText && props.updateNewMessageText(messageText);
+        let text = newMessageElement.current?.value;
+        text && props.updateNewMessageText(text);
     }
+    const sendMessage = () => {
+        let text = newMessageElement.current?.value;
+        text && props.sendMessage();
+    }
+
     return (
         <div className={styles.dialogs_wrapper}>
             <div className={styles.dialogs_description}>
                 <h2>Dialogs:</h2>
 
-                <input
-                    onChange={onMessageChange}
-                    value={newMessageText}
-                    ref={newDialogElement}
-                    placeholder="search dialogs..."/>
-                <button onClick={searchDialog}>Search dialog</button>
+                <input ref={newMessageElement}
+                       value={newMessagetext}
+                        onChange={onMessageChange}
+                        placeholder="search dialogs..."/>
+                <button >Search dialog</button>
             </div>
             <div className={styles.dialogs_container}>
                 {
@@ -51,10 +44,9 @@ export const Dialogs = (props: DialogsPropsType) => {
             </div>
             <div className={styles.messages_container}>
                 <div className={styles.dialogs_description}>
-                    <input
-                        onChange={onMessageChange}
-                        value={newMessageText}
-                        ref={newMessageElement}
+                    <input ref={newMessageElement}
+                           value={newMessagetext}
+                           onChange={onMessageChange}
                         placeholder="send message..."/>
                     <button onClick={sendMessage}>Send message</button>
                 </div>
