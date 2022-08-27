@@ -8,7 +8,7 @@ export type MessageType = {
     lastName:string;
     lastData:string;
     id:number;
-    messageText: string;
+    message: string;
 }
 
 export const Message = (props:MessageType) => {
@@ -30,7 +30,7 @@ export const Message = (props:MessageType) => {
                     </div>
                     <div className={styles.message_description}>
                         <p>
-                            {props.messageText}
+                            {props.message}
                         </p>
                     </div>
                 </div>

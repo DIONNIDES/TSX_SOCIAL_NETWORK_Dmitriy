@@ -2,6 +2,16 @@ import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
 import {DialogType} from '../components/Content/Dialogs/Dialog/Dialog';
 import {MessageType} from '../components/Content/Dialogs/Message/Message';
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
+
+/*export type ObjectType = {
+    any:any
+}*/
+
 
 export type UserInfoType = {
     id: number
@@ -32,10 +42,7 @@ export type StateType = {
 export type StoreType = {
     _state:StateType
     getState:()=>StateType
-    addPost: () => void
-    sendMessage: () => void
-    updateNewPostText: (postText: string) => void
-    updateNewMessageText: (messageText: string) => void
+    dispatch:(action:any)=>void
     subscribe:(observer:()=>void)=>void
     callSubscriber:()=>void
 }
@@ -73,7 +80,6 @@ let store: StoreType = {
 
             ],
         },
-
         dialogsPage: {
             dialogs: [
                 {id: 1, name: 'Dmitriy', lastName: 'Kurgan', lastData: '20:00'},
@@ -99,137 +105,146 @@ let store: StoreType = {
                     name: 'Dmitriy',
                     lastName: 'Kurgan',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 2,
                     name: 'Kolyan',
                     lastName: 'Poltorak',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 3,
                     name: 'Olga',
                     lastName: 'Lezhentseva',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 4,
                     name: 'Ivan',
                     lastName: 'Mamonov',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 5,
                     name: 'Artem',
                     lastName: 'Ryaboshapko',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 6,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 7,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 8,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 9,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 10,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 11,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 12,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 13,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
                 {
                     id: 14,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem loremm'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem loremm'
                 },
                 {
                     id: 15,
                     name: 'Victor',
                     lastName: 'Pobeditel',
                     lastData: '20:00',
-                    messageText: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
+                    message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem'
                 },
             ],
             newMessageText: '',
         },
     },
-    addPost() {
-        let newPost = {id: 1,
-            message: this._state.profilePage.newPostText,
-            time: '20:00', likes: 23};
 
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this.callSubscriber();
-        /*[newPost, ...store.profilePage.posts];*/
-    },
-    sendMessage() {
-        let newMessage = {id: 1,
-            name: 'Dmitriy',
-            lastName: 'Kurgan',
-            lastData: '20:00',
-            messageText: this._state.dialogsPage.newMessageText};
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        this.callSubscriber();
-    },
-    updateNewPostText(postText: string) {
-        this._state.profilePage.newPostText = postText;
-        this.callSubscriber();
-    },
-    updateNewMessageText(messageText: string) {
-        this._state.dialogsPage.newMessageText = messageText;
-        this.callSubscriber();
+    dispatch(action) {
+        debugger
+        switch (action.type){
+            case ADD_POST:
+                let newPost = {id: 1,
+                    message: this._state.profilePage.newPostText,
+                    time: '20:00', likes: 23
+                };
+
+                this._state.profilePage.posts.push(newPost);
+                this._state.profilePage.newPostText = '';
+                this.callSubscriber();
+                break
+
+            case UPDATE_NEW_POST_TEXT:
+                this._state.profilePage.newPostText = action.postText;
+                this.callSubscriber();
+                break
+
+            case SEND_MESSAGE:
+                let newMessage = {
+                    id: 1,
+                    name: 'Dmitriy',
+                    lastName: 'Kurgan',
+                    lastData: '20:00',
+                    message: this._state.dialogsPage.newMessageText};
+                this._state.dialogsPage.messages.push(newMessage);
+                this._state.dialogsPage.newMessageText = '';
+                this.callSubscriber();
+                break
+
+            case UPDATE_NEW_MESSAGE_TEXT:
+                this._state.dialogsPage.newMessageText = action.messageText;
+                this.callSubscriber();
+        }
     },
 
     subscribe (observer:()=>void) {
@@ -238,5 +253,50 @@ let store: StoreType = {
 
 }
 
+//action creators
+export const addPostActionCreator = () =>({type:ADD_POST});
+export const updateNewPostTextActionCreator = (postText:string) =>({type:UPDATE_NEW_POST_TEXT, postText});
+export const sendMessageActionCreator = () =>({type:SEND_MESSAGE});
+export const updateNewMessageTextActionCreator = (messageText:string) =>({type:UPDATE_NEW_MESSAGE_TEXT, messageText});
 
 export default store;
+
+
+
+
+
+
+
+
+
+
+
+
+/* addPost() {
+     let newPost = {id: 1,
+         message: this._state.profilePage.newPostText,
+         time: '20:00', likes: 23};
+
+     this._state.profilePage.posts.push(newPost);
+     this._state.profilePage.newPostText = '';
+     this.callSubscriber();
+     /!*[newPost, ...store.profilePage.posts];*!/
+ },
+ sendMessage() {
+     let newMessage = {id: 1,
+         name: 'Dmitriy',
+         lastName: 'Kurgan',
+         lastData: '20:00',
+         messageText: this._state.dialogsPage.newMessageText};
+     this._state.dialogsPage.messages.push(newMessage);
+     this._state.dialogsPage.newMessageText = '';
+     this.callSubscriber();
+ },
+ updateNewPostText(postText: string) {
+     this._state.profilePage.newPostText = postText;
+     this.callSubscriber();
+ },
+ updateNewMessageText(messageText: string) {
+     this._state.dialogsPage.newMessageText = messageText;
+     this.callSubscriber();
+ },*/

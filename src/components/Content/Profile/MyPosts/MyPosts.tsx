@@ -1,13 +1,12 @@
 import React, {ChangeEventHandler} from 'react';
 import styles from './MyPosts.module.css';
 import {Post, PostType} from './Post/Post';
-import {ProfilePageType} from '../../../../redux/store';
+import {addPostActionCreator, ProfilePageType, updateNewPostTextActionCreator} from '../../../../redux/store';
 
 
 type MyPostsPropsType = {
     profilePage:ProfilePageType
-    addPost:()=>void
-    updateNewPostText: (postText:string)=>void
+    dispatch:(action:any)=>void
 };
 
 export const MyPosts = (props:MyPostsPropsType) => {
@@ -17,12 +16,17 @@ export const MyPosts = (props:MyPostsPropsType) => {
 
     const addPost = () =>{
         let text = newPostElement.current?.value;
-        text && props.addPost();
+        /*text && props.addPost();*/
+        /*text && props.dispatch({type:'ADD-POST'});*/
+        text && props.dispatch(addPostActionCreator());
     }
 
     const onPostChange = () => {
         let text = newPostElement.current?.value;
-        text && props.updateNewPostText(text);
+        /*text && props.updateNewPostText(text);*/
+        //text && props.dispatch({type:'UPDATE-NEW-POST-TEXT', postText:text})
+        text && props.dispatch(updateNewPostTextActionCreator(text))
+
     }
     return (
         <div className={styles.my_posts_wrapper}>

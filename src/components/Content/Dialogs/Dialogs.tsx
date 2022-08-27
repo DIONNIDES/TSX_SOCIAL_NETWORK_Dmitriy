@@ -2,26 +2,32 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import {Dialog, DialogType} from './Dialog/Dialog';
 import {Message, MessageType} from './Message/Message';
-import {DialogsPageType} from '../../../redux/store';
+import {DialogsPageType, sendMessageActionCreator, updateNewMessageTextActionCreator} from '../../../redux/store';
 
 type DialogsPropsType = {
     dialogsPage: DialogsPageType
-    sendMessage: () => void
-    updateNewMessageText: (messageText: string) => void
+    dispatch:(action:any)=>void
 }
 
 
 export const Dialogs = (props: DialogsPropsType) => {
-    let newMessagetext = props.dialogsPage.newMessageText;
+    let newMessageText = props.dialogsPage.newMessageText;
     let newMessageElement = React.createRef<HTMLInputElement>();
 
     const onMessageChange = () => {
         let text = newMessageElement.current?.value;
-        text && props.updateNewMessageText(text);
+       /* text && props.updateNewMessageText(text);*/
+       // text && props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', messageText:text});
+
+       text && props.dispatch(updateNewMessageTextActionCreator(text));
+
     }
     const sendMessage = () => {
         let text = newMessageElement.current?.value;
-        text && props.sendMessage();
+        /*text && props.sendMessage();*/
+        //text && props.dispatch({type:'SEND-MESSAGE'});
+
+        text && props.dispatch(sendMessageActionCreator());
     }
 
     return (
@@ -30,7 +36,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                 <h2>Dialogs:</h2>
 
                 <input ref={newMessageElement}
-                       value={newMessagetext}
+                       value={newMessageText}
                         onChange={onMessageChange}
                         placeholder="search dialogs..."/>
                 <button >Search dialog</button>
@@ -45,7 +51,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={styles.messages_container}>
                 <div className={styles.dialogs_description}>
                     <input ref={newMessageElement}
-                           value={newMessagetext}
+                           value={newMessageText}
                            onChange={onMessageChange}
                         placeholder="send message..."/>
                     <button onClick={sendMessage}>Send message</button>
@@ -55,7 +61,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                     props.dialogsPage.messages.map(message => <Message
                         name={message.name}
                         lastName={message.lastName} lastData={message.lastData}
-                        id={message.id} messageText={message.messageText}/>
+                        id={message.id} message={message.message}/>
                     )
                 }
             </div>

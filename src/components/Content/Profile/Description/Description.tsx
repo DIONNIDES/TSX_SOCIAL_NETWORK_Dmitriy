@@ -5,7 +5,6 @@ import {UserInfoType} from '../../../../redux/store';
 
 type DescriptionPropsType = {
     usersCharacteristics: Array<UserInfoType>;
-    addPost:(postText:string)=>void
 }
 
 export const Description = (props: DescriptionPropsType) => {
