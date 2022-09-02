@@ -1,22 +1,20 @@
 import React from 'react';
 import styles from './Profile.module.css';
-import {Ava} from './Ava/Ava';
-import {Description} from './Description/Description';
-import {MyPosts} from './MyPosts/MyPosts';
-import {ProfilePageType} from '../../../redux/store';
+import {StoreType} from '../../../redux/redux-store';
+import {MyPostsContainer} from './MyPosts/MyPostsContainer';
+import {AvaContainer} from './Ava/AvaContainer';
+import {DescriptionContainer} from './Description/DescriptionContainer';
 
 type ProfilePropsType = {
-    dispatch:(action:any)=>void
-    profilePage:ProfilePageType
+    store:StoreType
 }
 
 export const Profile = (props: ProfilePropsType) => {
     return (
         <div className={styles.profile_wrapper}>
-            <Ava usersCharacteristics={props.profilePage.usersCharacteristics}/>
-            <Description usersCharacteristics={props.profilePage.usersCharacteristics}/>
-            <MyPosts profilePage={props.profilePage}
-                     dispatch={props.dispatch}
+            <AvaContainer store={props.store}/>
+            <DescriptionContainer store={props.store}/>
+            <MyPostsContainer store={props.store}
             />
         </div>
     );

@@ -1,4 +1,7 @@
-import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
+
+export {}
+
+/*import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
 import {DialogType} from '../components/Content/Dialogs/Dialog/Dialog';
 import {MessageType} from '../components/Content/Dialogs/Message/Message';
 import {AddPostType, profileReducer, UpdateNewPostTextType} from './profileReducer';
@@ -206,7 +209,7 @@ let store: StoreType = {
         },
     },
 
-    dispatch(action) {
+    dispatch(action:ActionTypes) {
        this._state.profilePage =  profileReducer(this._state.profilePage, action);
        this._state.dialogsPage =  dialogsReducer(this._state.dialogsPage, action);
 
@@ -217,15 +220,15 @@ let store: StoreType = {
         this.callSubscriber = observer;
     }
 
-}
+}*/
 
 //action creators
 /*export const addPostActionCreator = () =>({type:ADD_POST});
 export const updateNewPostTextActionCreator = (postText:string) =>({type:UPDATE_NEW_POST_TEXT, postText});
 export const sendMessageActionCreator = () =>({type:SEND_MESSAGE});
 export const updateNewMessageTextActionCreator = (messageText:string) =>({type:UPDATE_NEW_MESSAGE_TEXT, messageText});*/
-
-export default store;
+/*
+export default store;*/
 
 
 

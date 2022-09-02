@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Ava.module.css';
 import my_ava from './../../../../asets/my_photo.png';
-import {UserInfoType} from '../../../../redux/store';
+import {UserInfoType} from '../../../../redux/redux-store';
 
 
 

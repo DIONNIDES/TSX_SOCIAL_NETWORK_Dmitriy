@@ -1,32 +1,27 @@
-import React, {ChangeEventHandler} from 'react';
+import React, {ChangeEvent, ChangeEventHandler} from 'react';
 import styles from './MyPosts.module.css';
 import {Post, PostType} from './Post/Post';
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../../redux/profileReducer';
-import {ProfilePageType} from '../../../../redux/store';
+
 
 
 type MyPostsPropsType = {
-    profilePage:ProfilePageType
-    dispatch:(action:any)=>void
+    addPost:()=>void
+    updateNewPostText:(text:string)=>void
+    newPostText:string
+    posts:Array<PostType>
 };
 
 export const MyPosts = (props:MyPostsPropsType) => {
-    let newPostText = props.profilePage.newPostText;
-    let posts = props.profilePage.posts.map(p => <Post  id={p.id} message={p.message} time={p.time} likes={p.likes}/>);
-    let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    const addPost = () =>{
-        let text = newPostElement.current?.value;
-        /*text && props.addPost();*/
-        /*text && props.dispatch({type:'ADD-POST'});*/
-        text && props.dispatch(addPostActionCreator());
+    let posts = props.posts.map(p => <Post id={p.id} message={p.message} time={p.time} likes={p.likes}/>);
+
+    const addPostHandler = () =>{
+        props.addPost();
     }
 
-    const onPostChange = () => {
-        let text = newPostElement.current?.value;
-        /*text && props.updateNewPostText(text);*/
-        //text && props.dispatch({type:'UPDATE-NEW-POST-TEXT', postText:text})
-        text && props.dispatch(updateNewPostTextActionCreator(text))
+    const onPostChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.currentTarget.value
+        props.updateNewPostText(text)
 
     }
     return (
@@ -35,13 +30,12 @@ export const MyPosts = (props:MyPostsPropsType) => {
                 <div className={styles.add_post_block}>
                     <h2>My posts:</h2>
                     <textarea
-                        ref={newPostElement}
-                        onChange={onPostChange}
-                        value={newPostText}
+                        onChange={onPostChangeHandler}
+                        value={props.newPostText}
                         placeholder="Write you post..."/>
                 </div>
                 <button
-                    onClick={addPost}
+                    onClick={addPostHandler}
                     className={styles.add_post_button}>Add post
                 </button>
             </div>

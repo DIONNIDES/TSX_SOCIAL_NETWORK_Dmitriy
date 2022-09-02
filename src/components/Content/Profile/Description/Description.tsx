@@ -1,6 +1,6 @@
-import React, {LegacyRef, RefObject} from 'react';
+import React from 'react';
 import styles from './Description.module.css';
-import {UserInfoType} from '../../../../redux/store';
+import {UserInfoType} from '../../../../redux/redux-store';
 
 
 type DescriptionPropsType = {
