@@ -9,5 +9,5 @@ type AvaPropsType = {
 export const AvaContainer = (props:AvaPropsType) => {
     let state = props.store.getState().profilePage;
 
-    return <Ava usersCharacteristics={state.usersCharacteristics} />
+    return <Ava profileStatus={state.profileStatus}   />
 };

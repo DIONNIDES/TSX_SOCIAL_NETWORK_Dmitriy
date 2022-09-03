@@ -6,7 +6,7 @@ import {UserInfoType} from '../../../../redux/redux-store';
 
 
 type AvaPropsType = {
-    usersCharacteristics: Array<UserInfoType>;
+    profileStatus: string;
 }
 export const Ava = (props:AvaPropsType) => {
     return (
@@ -17,10 +17,10 @@ export const Ava = (props:AvaPropsType) => {
             <div className={styles.main_description_wrapper}>
                 <div className={styles.main_description}>
                     <div className={styles.main_title}>
-                        <h1>{props.usersCharacteristics[0].name} {props.usersCharacteristics[0].lastName}</h1>
+                        <h1>Dmitriy Kurgan</h1>
                     </div>
                     <div className={styles.main_status}>
-                        <p>{props.usersCharacteristics[0].status}</p>
+                        <p>{props.profileStatus}</p>
                     </div>
                 </div>
 

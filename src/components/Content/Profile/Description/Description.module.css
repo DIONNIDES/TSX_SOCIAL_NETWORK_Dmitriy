@@ -59,11 +59,20 @@
 
 .portfolio_block{
     grid-area: pb;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
     border: 1px solid #ffffff;
     border-radius: 2rem;
     background-color: #131124;
     margin: 1rem 1rem 1rem 0.5rem;
     color: #fff;
     font-size: 1.5rem;
-    padding: 2rem;
+}
+
+.portfolio_item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }

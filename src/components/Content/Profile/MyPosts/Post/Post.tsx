@@ -5,7 +5,7 @@ import like_icon from './../../../../../asets/like_icon.png'
 
 
 export type PostType = {
-    id: number;
+    id: string;
     message: string;
     time: string;
     likes: number;

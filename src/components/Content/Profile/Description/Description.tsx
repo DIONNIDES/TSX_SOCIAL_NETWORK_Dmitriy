@@ -1,13 +1,19 @@
 import React from 'react';
 import styles from './Description.module.css';
 import {UserInfoType} from '../../../../redux/redux-store';
+import {EditableSpan} from '../../../common/EditableSpan';
 
 
 type DescriptionPropsType = {
     usersCharacteristics: Array<UserInfoType>;
+    updateNewPortfolioFieldText: (fieldID: string, fieldText: string) => void
 }
 
 export const Description = (props: DescriptionPropsType) => {
+
+    const updateFieldTextHandler = (fieldID: string, fieldText: string) => {
+        props.updateNewPortfolioFieldText(fieldID, fieldText);
+    }
 
     return (
         <div className={styles.description_wrapper}>
@@ -31,11 +37,12 @@ export const Description = (props: DescriptionPropsType) => {
                 </div>
             </div>
             <div className={styles.portfolio_block}>
-                <p>Name: {props.usersCharacteristics[0].name}</p>
-                <p>Lastname: {props.usersCharacteristics[0].lastName}</p>
-                <p>Education: {props.usersCharacteristics[0].education}</p>
-                <p>Profession: {props.usersCharacteristics[0].profession}</p>
-                <p>Knowledges: {props.usersCharacteristics[0].knowledges}</p>
+
+                {
+                    props.usersCharacteristics.map(ch => <div className={styles.portfolio_item}>
+                        <span>{ch.field}: </span> <EditableSpan value={ch.fietldTitle} callback={(fieldText) => updateFieldTextHandler(ch.id, fieldText)}/>
+                    </div>)
+                }
             </div>
         </div>
     );
