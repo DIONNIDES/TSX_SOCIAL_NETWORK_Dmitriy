@@ -1,4 +1,4 @@
-import React, {ChangeEvent, ChangeEventHandler} from 'react';
+import React, {ChangeEvent} from 'react';
 import styles from './MyPosts.module.css';
 import {Post, PostType} from './Post/Post';
 

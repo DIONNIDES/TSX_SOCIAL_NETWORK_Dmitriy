@@ -12,29 +12,20 @@ import {MyMusic} from './components/Content/MyMusic/MyMusic';
 import {Settings} from './components/Content/Settings/Settings';
 import {Videos} from './components/Content/Videos/Videos';
 import {MyGroups} from './components/Content/MyGroups/MyGroups';
-import {StoreType} from './redux/redux-store';
 import {DialogsContainer} from './components/Content/Dialogs/DialogsContainer';
+import {UsersContainer} from './components/Content/Users/UsersContainer';
 
 
-
-type AppPropsType = {
-    store:StoreType
-}
-
-
-function App(props: AppPropsType) {
+function App() {
     return (
         <BrowserRouter>
             <div className={styles.App_wrapper}>
                 <Header/>
                 <Navbar/>
                 <div className={styles.Main_wrapper}>
-                    <Route path="/profile" render={() => <Profile
-                        store={props.store}
-                    />}/>
-                    <Route path="/dialogs" render={() => <DialogsContainer
-                        store={props.store}
-                    />}/>
+                    <Route path="/profile" render={() => <Profile/>}/>
+                    <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                    <Route path="/users" render={() => <UsersContainer/>}/>
                     <Route path="/friends" render={() => <MyFriends/>}/>
                     <Route path="/gallery" render={() => <Gallery/>}/>
                     <Route path="/videos" render={() => <Videos/>}/>

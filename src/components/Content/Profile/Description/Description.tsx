@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Description.module.css';
 import {UserInfoType} from '../../../../redux/redux-store';
-import {EditableSpan} from '../../../common/EditableSpan';
+import {EditableSpan} from '../../../common/Span/EditableSpan';
 
 
 type DescriptionPropsType = {

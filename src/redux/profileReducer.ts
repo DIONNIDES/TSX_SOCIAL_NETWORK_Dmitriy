@@ -27,7 +27,7 @@ export const profileReducer = (state: ProfilePageType = {
         {id: v1(), field: 'Profession', fietldTitle: 'Web-developer'},
         {id: v1(), field: 'Skills', fietldTitle: 'React+Redux, JS/TS'},
     ],
-    /*    newPortfolioFieldText: 'Dmitriy'*/
+
 }, action: ActionTypes) => {
 
     switch (action.type) {
@@ -38,15 +38,10 @@ export const profileReducer = (state: ProfilePageType = {
                 message: state.newPostText,
                 time: '20:00', likes: 23
             };
-
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
+            return {...state, posts:[newPost, ...state.posts], newPostText: ''};
 
         case UPDATE_NEW_POST_TEXT:
-
-            state.newPostText = action.postText;
-            return state;
+            return {...state, newPostText:action.postText};
 
         case UPDATE_NEW_PORTFOLIO_FIELD_TEXT:
             return {...state,

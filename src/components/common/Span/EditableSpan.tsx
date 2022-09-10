@@ -1,5 +1,4 @@
 import React, {ChangeEvent, useState} from 'react';
-import {UserInfoType} from '../../redux/redux-store';
 
 export type EditableSpanPropsType = {
     value:string

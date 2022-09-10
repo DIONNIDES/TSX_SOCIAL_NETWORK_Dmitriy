@@ -1,24 +1,23 @@
-import React, {LegacyRef, RefObject} from 'react';
-import styles from './Description.module.css';
-import {StoreType, UserInfoType} from '../../../../redux/redux-store';
+import React from 'react';
+import {ActionTypes, StateType} from '../../../../redux/redux-store';
 import {Description} from './Description';
 import {updateNewPortfolioFieldTextActionCreator} from '../../../../redux/profileReducer';
+import {connect} from 'react-redux';
 
 
-type DescriptionPropsType = {
-    store: StoreType;
+const mapStateToProps = (state:StateType)=>{
+    return{
+        usersCharacteristics:state.profilePage.usersCharacteristics
+    }
 }
 
-export const DescriptionContainer = (props: DescriptionPropsType) => {
-    let state = props.store.getState().profilePage;
-
-
-    const updateNewPortfolioFieldText = (fieldID:string,fieldText:string) =>{
-        props.store.dispatch(updateNewPortfolioFieldTextActionCreator(fieldID,fieldText))
+const mapDispatchToProps = (dispatch:(action:ActionTypes)=>void) =>{
+    return{
+        updateNewPortfolioFieldText: (fieldID:string, fieldText:string)=>{
+            dispatch(updateNewPortfolioFieldTextActionCreator(fieldID, fieldText));
+        }
     }
 
-    return <Description usersCharacteristics={state.usersCharacteristics}
-                        updateNewPortfolioFieldText={updateNewPortfolioFieldText}
+}
 
-    />
-};
+export const DescriptionContainer = connect(mapStateToProps, mapDispatchToProps)(Description);
