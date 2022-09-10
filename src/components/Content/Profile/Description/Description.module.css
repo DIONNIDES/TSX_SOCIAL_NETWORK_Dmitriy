@@ -71,8 +71,15 @@
     font-size: 1.5rem;
 }
 
+
 .portfolio_item{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 140px 260px;
+    align-items:center;
+    justify-items: start;
+    padding-left: 0;
+}
+
+.portfolio_field{
+    width: 140px;
 }
