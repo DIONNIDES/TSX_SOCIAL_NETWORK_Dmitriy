@@ -1,5 +1,6 @@
-import {ActionTypes, ProfilePageType} from './redux-store';
+import {ActionTypes, ProfilePageType, UserInfoType} from './redux-store';
 import {v1} from 'uuid';
+import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
 
 export type AddPostType = ReturnType<typeof addPostActionCreator>;//тип создания экшна для добавления поста
 export type UpdateNewPostTextType = ReturnType<typeof updateNewPostTextActionCreator>;//тип создания экшна для обновления текста поста
@@ -10,25 +11,27 @@ export const ADD_POST = 'ADD-POST';
 export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 export const UPDATE_NEW_PORTFOLIO_FIELD_TEXT = 'UPDATE-NEW-PORTFOLIO-FIELD-TEXT';
 
-export const profileReducer = (state: ProfilePageType = {
+let initialState = {
     posts: [
         {id: v1(), message: 'It`s my first post', time: '20:00', likes: 23},
         {id: v1(), message: 'It`s my second post', time: '20:05', likes: 33},
         {id: v1(), message: 'It`s my third post', time: '20:50', likes: 44},
         {id: v1(), message: 'It`s my fourth post', time: '20:58', likes: 55},
         {id: v1(), message: 'It`s my fifth post', time: '21:00', likes: 66},
-    ],
-    newPostText: '',
-    profileStatus: 'Its my first status',
+    ] as Array<PostType>,
+    newPostText: '' as string,
+    profileStatus: 'Its my first status' as string,
     usersCharacteristics: [
         {id: v1(), field: 'Name', fietldTitle: 'Dmitriy'},
         {id: v1(), field: 'Lastname', fietldTitle: 'Kurgan'},
         {id: v1(), field: 'Education', fietldTitle: 'Engineering'},
         {id: v1(), field: 'Profession', fietldTitle: 'Web-developer'},
         {id: v1(), field: 'Skills', fietldTitle: 'React+Redux, JS/TS'},
-    ],
+    ] as Array<UserInfoType>,
 
-}, action: ActionTypes) => {
+}
+
+export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
 
     switch (action.type) {
 

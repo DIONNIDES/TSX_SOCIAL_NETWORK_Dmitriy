@@ -1,29 +1,25 @@
 import React from 'react';
-import {ActionTypes, StateType} from '../../../../redux/redux-store';
+import {ActionTypes, StateType, UserInfoType} from '../../../../redux/redux-store';
 import {Ava} from './Ava';
-import {Action} from 'redux';
+import {Action, Dispatch} from 'redux';
 import {connect} from 'react-redux';
 
 
-/*
-type AvaPropsType = {
-    store: StoreType;
+type MapStateToPropsType ={
+    profileStatus:string
 }
-export const AvaContainer = (props:AvaPropsType) => {
-    let state = props.store.getState().profilePage;
 
-    return <Ava profileStatus={state.profileStatus}   />
-};
-*/
+type MapDispatchToPropsType ={
 
+}
 
-const mapStateToProps = (state:StateType)=>{
+const mapStateToProps = (state:StateType):MapStateToPropsType=>{
     return{
         profileStatus:state.profilePage.profileStatus
     }
 }
 
-const mapDispatchToProps = (dispatch:(action:ActionTypes)=>void) =>{
+const mapDispatchToProps = (dispatch:Dispatch):MapDispatchToPropsType =>{
     return{
 
     }

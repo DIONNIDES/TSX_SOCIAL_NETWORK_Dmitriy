@@ -18,7 +18,7 @@ let initialState = {
             location:{country:'Ukraine' ,city:'Mykolaiv'}, userStatus:'Its my status...', wasOnline:'20:59'},
         {id:v1(), photoUrl:usersAva, followed:false, userName:'Ivan M.',
             location:{country:'Ukraine' ,city:'Mykolaiv'}, userStatus:'Its my status...', wasOnline:'23:45'},*/
-    ]
+    ] as Array<UserType>
 }
 
 export const usersReducer = (state:UsersPageType = initialState, action:ActionTypes) =>{

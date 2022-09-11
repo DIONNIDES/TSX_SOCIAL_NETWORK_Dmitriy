@@ -3,14 +3,28 @@ import {connect} from 'react-redux';
 import {ActionTypes, StateType, UserType} from '../../../redux/redux-store';
 import {Users} from './Users';
 import {followAC, setUsercAC, unfollowAC} from '../../../redux/users-reducer';
+import {PostType} from '../Profile/MyPosts/Post/Post';
+import {Dispatch} from 'redux';
 
-const mapStateToProps = (state:StateType) =>{
+
+type MapStateToPropsType = {
+    users:Array<UserType>
+}
+
+type MapDispatchToPropsType = {
+    follow:(userID:string)=>void
+    unfollow:(userID:string)=>void
+    setUsers:(users:Array<UserType>)=>void
+}
+
+
+const mapStateToProps = (state:StateType):MapStateToPropsType =>{
     return{
         users:state.usersPage.users
     }
 }
 
-const mapDispatchToProps =(dispatch:(action:ActionTypes)=>void)=>{
+const mapDispatchToProps =(dispatch:Dispatch):MapDispatchToPropsType=>{
     return{
         follow:(userID:string)=>{
             dispatch(followAC(userID))

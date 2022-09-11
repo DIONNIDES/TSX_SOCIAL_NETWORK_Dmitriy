@@ -1,32 +1,43 @@
-.dialogs_wrapper{
+.dialogs_wrapper {
     display: grid;
     grid-template-areas:
     "dD mC"
     "dC mC";
-    grid-template-columns: 25rem 1fr ;
+    grid-template-columns: 25rem 1fr;
     grid-template-rows: 10rem 1fr;
     color: white;
 
 }
-h2{
+
+h2 {
     font-size: 2rem;
     text-align: center;
 }
 
-a{
+a {
     color: white;
     text-decoration: none;
 }
 
 
-.dialogs_description{
+.dialogs_description {
     display: grid;
     grid-area: dD;
-    justify-items: center;
+    display: grid;
+    grid-template-areas:
+                "dT dT"
+                "dI dB";
+    grid-template-columns: 1fr 120px;
     align-items: center;
+    padding: 0.5rem;
 }
 
-.dialogs_description input{
+.dialogs_title {
+    grid-area: dT;
+}
+
+.dialogs_description input {
+    grid-area: dI;
     width: 90%;
     height: 3rem;
     border-radius: 1rem;
@@ -35,13 +46,35 @@ a{
 
 }
 
+.search_dialog_button{
+    grid-area: dB;
+    height: 55px;
+    border-radius: 1rem;
+}
 
-
-.dialogs_container{
+.dialogs_container {
     grid-area: dC;
 }
 
-.messages_container{
+.messages_container {
     grid-area: mC;
     border-left: 2px solid #fff;
+}
+
+.messages_description{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    padding: 0.5rem;
+    grid-gap: 0.5rem;
+}
+
+.messages_input{
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+.send_message_button {
+    height: 55px;
+    border-radius: 1rem;
 }
