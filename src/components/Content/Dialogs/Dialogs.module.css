@@ -6,7 +6,6 @@
     grid-template-columns: 25rem 1fr;
     grid-template-rows: 10rem 1fr;
     color: white;
-
 }
 
 h2 {
@@ -18,7 +17,6 @@ a {
     color: white;
     text-decoration: none;
 }
-
 
 .dialogs_description {
     display: grid;
@@ -43,7 +41,6 @@ a {
     border-radius: 1rem;
     padding-left: 1rem;
     font-size: 1.5rem;
-
 }
 
 .search_dialog_button{

@@ -30,10 +30,10 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={styles.dialogs_description}>
                 <h2 className={styles.dialogs_title}>Dialogs:</h2>
 
-                <input value={props.newMessageText}
-                        onChange={onMessageChange}
+                <input value={undefined}
+                        onChange={()=>{}}
                         placeholder="search dialogs..."/>
-                <Button title={'Search dialog'} callback={sendMessage} className={styles.search_dialog_button}/>
+                <Button title={'Search dialog'} callback={()=>{}} className={styles.search_dialog_button}/>
             </div>
             <div className={styles.dialogs_container}>
                 {
