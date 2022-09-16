@@ -23,14 +23,19 @@ export type LocationType = {
     city:string
 }
 
+/*export type PhotosType={
+    small?:string | undefined
+    large?:string| undefined
+}*/
+
 export type UserType = {
-    id:string
-    photoUrl:string
+    id:number
+    photos:any
     followed:boolean
-    userName:string
-    location:LocationType
-    userStatus:string
-    wasOnline:string
+    name:string
+    location?:LocationType
+    userStatus?:string
+    wasOnline?:string
 }
 
 export type UsersPageType = {

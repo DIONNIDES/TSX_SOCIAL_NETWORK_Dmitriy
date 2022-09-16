@@ -2,31 +2,71 @@ import React, {useEffect} from 'react';
 import styles from './Users.module.css';
 import {User} from './User/User';
 import {UserType} from '../../../redux/redux-store';
-import {v1} from 'uuid';
-import usersAva from '../../../asets/usersInitialAva.jpg';
+import axios from 'axios';
+
 
 export type PropsType = {
     users:Array<UserType>
-    follow:(userID:string)=>void
-    unfollow:(userID:string)=>void
+    follow:(userID:number)=>void
+    unfollow:(userID:number)=>void
     setUsers:(users:Array<UserType>)=>void
 }
 
-export const Users = (props:PropsType) => {/**/
+export class Users extends React.Component<PropsType, any>{
+
+    componentDidMount() {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response=>{
+            this.props.setUsers(response.data.items);
+        })
+    }
+
+    users = this.props.users.map(u=><User key ={u.id} id={u.id} name={u.name}
+                                           userStatus={u.userStatus} followed={u.followed}
+                                           location={u.location} photos={u.photos && u.photos.small} wasOnline={u.wasOnline}
+                                           follow={()=>this.props.follow(u.id)} unfollow={()=>this.props.unfollow(u.id)}
+    />)
+
+    render(){
+
+        return (
+            <div className={styles.users_wrapper} >
+
+                {this.users.length > 0
+                    ? this.users
+                    : 'There are currently no users...'
+                }
+            </div>
+        );
+    }
+
+}
+
+
+//FUNCTIONAL COMPONENT + USE EFFECT
+
+/*
+
+
+export type PropsType = {
+    users:Array<UserType>
+    follow:(userID:number)=>void
+    unfollow:(userID:number)=>void
+    setUsers:(users:Array<UserType>)=>void
+}
+
+export const Users = (props:PropsType) => {/!**!/
     useEffect(()=>{
-        props.setUsers([
-            {id:v1(), photoUrl:usersAva, followed:false, userName:'Dimas K.',
-                location:{country:'Ukraine' ,city:'Mykolaiv'}, userStatus:'Its my status...', wasOnline:'20:58'},
-            {id:v1(), photoUrl:usersAva, followed:false, userName:'Kolyan P.',
-                location:{country:'Ukraine' ,city:'Mykolaiv'}, userStatus:'Its my status...', wasOnline:'20:59'},
-            {id:v1(), photoUrl:usersAva, followed:false, userName:'Ivan M.',
-                location:{country:'Ukraine' ,city:'Mykolaiv'}, userStatus:'Its my status...', wasOnline:'23:45'},
-        ])
+
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response=>{
+            props.setUsers(response.data.items);
+            debugger
+        })
+
     }, [])
 
-    const users = props.users.map(u=><User key ={u.id} id={u.id} userName={u.userName}
+    const users = props.users.map(u=><User key ={u.id} id={u.id} name={u.name}
                                            userStatus={u.userStatus} followed={u.followed}
-                                           location={u.location} photoUrl={u.photoUrl} wasOnline={u.wasOnline}
+                                           location={u.location} photos={u.photos && u.photos.small} wasOnline={u.wasOnline}
                                            follow={()=>props.follow(u.id)} unfollow={()=>props.unfollow(u.id)}
     />)
     return (
@@ -40,3 +80,4 @@ export const Users = (props:PropsType) => {/**/
     );
 };
 
+*/

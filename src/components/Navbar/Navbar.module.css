@@ -30,10 +30,12 @@ li{
 .nav_item:hover{
     background-color: #fff;
     color: black;
+    border-radius: 1rem;
 }
 
 a.active{
     background-color: #ffffff;
     color: #131124;
+    border-radius: 1rem;
 }
 
