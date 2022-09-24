@@ -4,7 +4,14 @@ import {DialogType} from '../components/Content/Dialogs/Dialog/Dialog';
 import {MessageType} from '../components/Content/Dialogs/Message/Message';
 import {AddPostType, profileReducer, UpdateNewPortfolioFieldTextType, UpdateNewPostTextType} from './profileReducer';
 import {dialogsReducer, SendMessageType, UpdateNewMessageTextType} from './dialogsReducer';
-import {FollowType, SetUsersType, UnfollowType, usersReducer} from './users-reducer';
+import {
+    FollowType,
+    SetCurrentPageType,
+    SetTotalCountType,
+    SetUsersType,
+    UnfollowType,
+    usersReducer
+} from './users-reducer';
 
 
 export type ActionTypes =
@@ -15,7 +22,10 @@ export type ActionTypes =
     | UpdateNewPortfolioFieldTextType
     | FollowType
     | UnfollowType
-    | SetUsersType;
+    | SetUsersType
+    | SetTotalCountType
+    | SetCurrentPageType
+
 //типы action creators , обьединенные в один
 
 export type LocationType = {
@@ -40,6 +50,9 @@ export type UserType = {
 
 export type UsersPageType = {
     users:Array<UserType>
+    totalCount: number
+    pageSize: number
+    currentPage:number
 }
 
 export type UserInfoType = {
