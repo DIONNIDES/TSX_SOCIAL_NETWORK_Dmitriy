@@ -3,6 +3,7 @@ import {inspect} from 'util';
 import styles from './Button.module.css'
 
 export type PropsType = {
+    disabled?:boolean
     className?:string
     title:string;
     callback:()=>void
@@ -17,7 +18,7 @@ export const Button:React.FC<PropsType> = (props) => {
     }
 
     return (
-        <button className={finalClassName} onClick={onClickHandler}>
+        <button className={finalClassName} onClick={onClickHandler} disabled={restProps.disabled}>
             {title}
         </button>
     );

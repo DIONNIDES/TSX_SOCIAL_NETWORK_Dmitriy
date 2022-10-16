@@ -1,10 +1,10 @@
 import {PostType} from '../../components/Content/Profile/MyPosts/Post/Post';
 import {UserInfoType} from '../redux-store';
 import {
-    addPostActionCreator,
+    addPost,
     profileReducer,
-    updateNewPortfolioFieldTextActionCreator,
-    updateNewPostTextActionCreator
+    updateNewPortfolioFieldText,
+    updateNewPostText
 } from '../profileReducer';
 
 
@@ -26,10 +26,11 @@ test('new post should be added',()=>{
             {id: '4', field: 'Profession', fietldTitle: 'Web-developer'},
             {id: '5', field: 'Skills', fietldTitle: 'React+Redux, JS/TS'},
         ] as Array<UserInfoType>,
+        profile:{}
 
     }
 
-    const endState = profileReducer(initialState, addPostActionCreator());
+    const endState = profileReducer(initialState, addPost());
 
     expect(initialState.posts.length).toBe(5);
     expect(endState.posts.length).toBe(6);
@@ -53,10 +54,11 @@ test('new post text should be changed',()=>{
             {id: '4', field: 'Profession', fietldTitle: 'Web-developer'},
             {id: '5', field: 'Skills', fietldTitle: 'React+Redux, JS/TS'},
         ] as Array<UserInfoType>,
+        profile:{}
 
     }
 
-    const endState = profileReducer(initialState, updateNewPostTextActionCreator('dima'));
+    const endState = profileReducer(initialState, updateNewPostText('dima'));
 
     expect(initialState.newPostText).toBe('');
     expect(endState.newPostText).toBe('dima');
@@ -80,10 +82,11 @@ test('new portfolio field text should be changed',()=>{
             {id: '4', field: 'Profession', fietldTitle: 'Web-developer'},
             {id: '5', field: 'Skills', fietldTitle: 'React+Redux, JS/TS'},
         ] as Array<UserInfoType>,
+        profile:{}
 
     }
 
-    const endState = profileReducer(initialState, updateNewPortfolioFieldTextActionCreator('1','new text'));
+    const endState = profileReducer(initialState, updateNewPortfolioFieldText('1','new text'));
 
     expect(initialState.usersCharacteristics[0].fietldTitle).toBe('Dmitriy');
     expect(endState.usersCharacteristics[0].fietldTitle).toBe('new text');

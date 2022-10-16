@@ -1,12 +1,12 @@
 import React from 'react';
-import {ActionTypes, StateType, UserInfoType} from '../../../../redux/redux-store';
+import {StateType} from '../../../../redux/redux-store';
 import {Ava} from './Ava';
-import {Action, Dispatch} from 'redux';
+import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 
 
 type MapStateToPropsType ={
-    profileStatus:string
+    profile:any
 }
 
 type MapDispatchToPropsType ={
@@ -15,7 +15,7 @@ type MapDispatchToPropsType ={
 
 const mapStateToProps = (state:StateType):MapStateToPropsType=>{
     return{
-        profileStatus:state.profilePage.profileStatus
+        profile:state.profilePage.profile
     }
 }
 

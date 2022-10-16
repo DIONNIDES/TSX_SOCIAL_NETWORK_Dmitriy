@@ -3,6 +3,7 @@ import styles from './Dialogs.module.css';
 import {Dialog, DialogType} from './Dialog/Dialog';
 import {Message, MessageType} from './Message/Message';
 import {Button} from '../../common/Button/Button';
+import {Redirect} from 'react-router-dom';
 
 
 type DialogsPropsType = {
@@ -11,6 +12,7 @@ type DialogsPropsType = {
     newMessageText:string
     dialogs:Array<DialogType>
     messages:Array<MessageType>
+    isAuth:boolean
 }
 
 
@@ -38,6 +40,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={styles.dialogs_container}>
                 {
                     props.dialogs.map(dialog => <Dialog
+                        key={dialog.id}
                         id={dialog.id} name={dialog.name}
                         lastName={dialog.lastName}
                         lastData={dialog.lastData}/>)}

@@ -1,8 +1,8 @@
 import {DialogType} from '../../components/Content/Dialogs/Dialog/Dialog';
 import {MessageType} from '../../components/Content/Dialogs/Message/Message';
-import {dialogsReducer, sendMessageActionCreator, updateNewMessageTextActionCreator} from '../dialogsReducer';
+import {dialogsReducer, sendMessage, updateNewMessageText} from '../dialogsReducer';
 import {UserType} from '../redux-store';
-import {followAC, setUsersAC, unfollowAC, usersReducer} from '../users-reducer';
+import {followUser, setUsers, unfollowUser, usersReducer} from '../usersReducer';
 
 
 /*
@@ -43,9 +43,11 @@ test('users should be added to state',()=>{
         ] as Array<UserType>,
         totalCount: 0,
         pageSize: 5,
-        currentPage:1
+        currentPage:1,
+        isFetching:false,
+        followingInProgress: []
     }
-    const endState = usersReducer(initialState, setUsersAC([{id:11, name:'Dima', followed:false, photos:'none', userStatus:'status', wasOnline:'11111'}]));
+    const endState = usersReducer(initialState, setUsers([{id:11, name:'Dima', followed:false, photos:'none', userStatus:'status', wasOnline:'11111'}]));
 
     expect(initialState.users.length).toBe(0);
     expect(endState.users.length).toBe(1);

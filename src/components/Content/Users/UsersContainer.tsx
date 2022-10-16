@@ -1,37 +1,40 @@
-import React from 'react';
+import React, {ComponentType} from 'react';
 import {connect} from 'react-redux';
 import {StateType, UserType} from '../../../redux/redux-store';
 import {UsersAPI} from './UsersAPI';
-import {followAC, setCurrentPageAC, setTotalCountAC, setUsersAC, unfollowAC} from '../../../redux/users-reducer';
-import {Dispatch} from 'redux';
+import {
+    followUser, requestUsers,
+    setCurrentPage,
+    setTotalCount,
+    setUsers,
+    toggleIsFetching, toggleIsFollowingProgress,
+    unfollowUser
+} from '../../../redux/usersReducer';
+import {wIthAuthRedirect} from '../../HOK/WIthAuthRedirect';
+import {compose} from 'redux';
 
 
 type MapStateToPropsType = {
-    users:Array<UserType>
+    users: Array<UserType>
     totalCount: number
     pageSize: number
-    currentPage:number
+    currentPage: number
+    isFetching: boolean
+    followingInProgress: Array<number>
 }
 
-type MapDispatchToPropsType = {
-    follow:(userID:number)=>void
-    unfollow:(userID:number)=>void
-    setUsers:(users:Array<UserType>)=>void
-    setTotalCount:(totalCount:number)=>void
-    setCurrentPage:(currentPage:number)=>void
-}
-
-
-const mapStateToProps = (state:StateType):MapStateToPropsType =>{
-    return{
-        users:state.usersPage.users,
+const mapStateToProps = (state: StateType): MapStateToPropsType => {
+    return {
+        users: state.usersPage.users,
         totalCount: state.usersPage.totalCount,
         pageSize: state.usersPage.pageSize,
-        currentPage:state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
-const mapDispatchToProps =(dispatch:Dispatch):MapDispatchToPropsType=>{
+/*const mapDispatchToProps =(dispatch:Dispatch):MapDispatchToPropsType=>{
     return{
         follow:(userID:number)=>{
             dispatch(followAC(userID))
@@ -48,7 +51,18 @@ const mapDispatchToProps =(dispatch:Dispatch):MapDispatchToPropsType=>{
         setCurrentPage:(currentPage:number)=>{
             dispatch(setCurrentPageAC(currentPage))
         },
+        toggleIsFetching:(isFetching:boolean)=>{
+            dispatch(toggleIsFetchingAC(isFetching))
+        }
     }
-}
+}*/
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+
+export const UsersContainer = compose<ComponentType>(
+    (connect(mapStateToProps, {
+        followUser, unfollowUser, setUsers, setTotalCount,
+        setCurrentPage, toggleIsFetching, toggleIsFollowingProgress,
+        requestUsers
+    })),
+    wIthAuthRedirect
+)(UsersAPI);

@@ -39,8 +39,8 @@ export const Description = (props: DescriptionPropsType) => {
             <div className={styles.portfolio_block}>
 
                 {
-                    props.usersCharacteristics.map(ch => <div className={styles.portfolio_item}>
-                        <span className={styles.portfolio_field}>{ch.field}: </span> <EditableSpan value={ch.fietldTitle} callback={(fieldText) => updateFieldTextHandler(ch.id, fieldText)}/>
+                    props.usersCharacteristics.map(ch => <div className={styles.portfolio_item} key={ch.id}>
+                        <span className={styles.portfolio_field}>{ch.field}: </span> <EditableSpan value={ch.fietldTitle.length>0 ? ch.fietldTitle : '-none-' } callback={(fieldText) => updateFieldTextHandler(ch.id, fieldText)}/>
                     </div>)
                 }
             </div>

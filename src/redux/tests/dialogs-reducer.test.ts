@@ -1,6 +1,6 @@
 import {DialogType} from '../../components/Content/Dialogs/Dialog/Dialog';
 import {MessageType} from '../../components/Content/Dialogs/Message/Message';
-import {dialogsReducer, sendMessageActionCreator, updateNewMessageTextActionCreator} from '../dialogsReducer';
+import {dialogsReducer, sendMessage, updateNewMessageText} from '../dialogsReducer';
 
 
 test('new message should be added',()=>{
@@ -68,7 +68,7 @@ test('new message should be added',()=>{
         newMessageText: '' as string,
     }
 
-    const endState = dialogsReducer(initialState, sendMessageActionCreator());
+    const endState = dialogsReducer(initialState, sendMessage());
 
     expect(initialState.messages.length).toBe(7);
     expect(endState.messages.length).toBe(8);
@@ -139,7 +139,7 @@ test('new messagetext should be changed',()=>{
         newMessageText: '' as string,
     }
 
-    const endState = dialogsReducer(initialState, updateNewMessageTextActionCreator('message'));
+    const endState = dialogsReducer(initialState, updateNewMessageText('message'));
 
     expect(initialState.newMessageText).toBe('');
     expect(endState.newMessageText).toBe('message');

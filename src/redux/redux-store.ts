@@ -1,17 +1,38 @@
-import {combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, legacy_createStore} from 'redux';
+import thunkMiddleware from 'redux-thunk'
 import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
 import {DialogType} from '../components/Content/Dialogs/Dialog/Dialog';
 import {MessageType} from '../components/Content/Dialogs/Message/Message';
-import {AddPostType, profileReducer, UpdateNewPortfolioFieldTextType, UpdateNewPostTextType} from './profileReducer';
+import {
+    AddPostType,
+    profileReducer,
+    SetUserProfileType,
+    UpdateNewPortfolioFieldTextType,
+    UpdateNewPostTextType
+} from './profileReducer';
 import {dialogsReducer, SendMessageType, UpdateNewMessageTextType} from './dialogsReducer';
 import {
     FollowType,
     SetCurrentPageType,
     SetTotalCountType,
     SetUsersType,
+    ToggleIsFetchingAC,
+    ToggleIsFollowingProgressAC,
     UnfollowType,
     usersReducer
-} from './users-reducer';
+} from './usersReducer';
+import {authReducer, AuthType, SetUserDataType} from './authReducer';
+
+
+// declare global {
+//     interface Window {
+//         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+//     }
+// }
+//
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//
+
 
 
 export type ActionTypes =
@@ -25,6 +46,11 @@ export type ActionTypes =
     | SetUsersType
     | SetTotalCountType
     | SetCurrentPageType
+    | ToggleIsFetchingAC
+    | SetUserProfileType
+    | SetUserDataType
+    | ToggleIsFollowingProgressAC
+
 
 //типы action creators , обьединенные в один
 
@@ -53,6 +79,8 @@ export type UsersPageType = {
     totalCount: number
     pageSize: number
     currentPage:number
+    isFetching:boolean
+    followingInProgress:Array<number>
 }
 
 export type UserInfoType = {
@@ -67,6 +95,7 @@ export type ProfilePageType = {
     profileStatus: string
     usersCharacteristics: Array<UserInfoType>
     newPostText: string
+    profile:any
 }
 
 export type DialogsPageType = {
@@ -79,6 +108,7 @@ export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     usersPage: UsersPageType
+    auth:AuthType
 }
 
 export type StoreType = {
@@ -89,13 +119,14 @@ export type StoreType = {
     callSubscriber?: (_state: StateType) => void
 }
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    auth:authReducer
 });
 
 
-let store = createStore(reducers);
+export const store = legacy_createStore(rootReducer,applyMiddleware(thunkMiddleware));
 
 export default store;

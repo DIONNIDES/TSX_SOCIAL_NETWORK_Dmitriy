@@ -1,26 +1,24 @@
 import React from 'react';
 import styles from './Ava.module.css';
-import my_ava from './../../../../asets/my_photo.png';
-import {UserInfoType} from '../../../../redux/redux-store';
-
+import ava from './../../../../asets/user_post_ava.png';
 
 
 type AvaPropsType = {
-    profileStatus: string;
+    profile:any
 }
 export const Ava = (props:AvaPropsType) => {
     return (
         <div className={styles.ava_wrapper}>
             <div className={styles.main_ava}>
-                <a href="#"><img src={my_ava}/></a>
+                <a href="#"><img src={props.profile.photos && props.profile.photos.large? props.profile.photos.large:ava }/></a>
             </div>
             <div className={styles.main_description_wrapper}>
                 <div className={styles.main_description}>
                     <div className={styles.main_title}>
-                        <h1>Dmitriy Kurgan</h1>
+                        <h1>{props.profile.fullName}</h1>
                     </div>
                     <div className={styles.main_status}>
-                        <p>{props.profileStatus}</p>
+                        <p>{props.profile.aboutMe}</p>
                     </div>
                 </div>
 

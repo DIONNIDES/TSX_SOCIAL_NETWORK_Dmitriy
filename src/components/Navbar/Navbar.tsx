@@ -12,7 +12,7 @@ export const Navbar = () => {
             </div>
             <div className={styles.navigation_menu}>
                 <ul>
-                    <li><NavLink to="/profile"
+                    <li><NavLink to="/profile/:userId?"
                                  activeClassName={styles.active}
                                  className={styles.nav_item}>Profile</NavLink></li>
                     <li><NavLink to="/dialogs"
