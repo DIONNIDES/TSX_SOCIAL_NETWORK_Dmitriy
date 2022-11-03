@@ -6,7 +6,7 @@ import {MessageType} from '../components/Content/Dialogs/Message/Message';
 import {
     AddPostType,
     profileReducer,
-    SetUserProfileType,
+    SetUserProfileType, SetUserStatusType,
     UpdateNewPortfolioFieldTextType,
     UpdateNewPostTextType
 } from './profileReducer';
@@ -17,7 +17,7 @@ import {
     SetTotalCountType,
     SetUsersType,
     ToggleIsFetchingAC,
-    ToggleIsFollowingProgressAC,
+    ToggleIsFollowingProgressType,
     UnfollowType,
     usersReducer
 } from './usersReducer';
@@ -49,7 +49,8 @@ export type ActionTypes =
     | ToggleIsFetchingAC
     | SetUserProfileType
     | SetUserDataType
-    | ToggleIsFollowingProgressAC
+    | ToggleIsFollowingProgressType
+    | SetUserStatusType
 
 
 //типы action creators , обьединенные в один
@@ -92,7 +93,7 @@ export type UserInfoType = {
 
 export type ProfilePageType = {
     posts: Array<PostType>
-    profileStatus: string
+    status: string
     usersCharacteristics: Array<UserInfoType>
     newPostText: string
     profile:any
@@ -111,22 +112,15 @@ export type StateType = {
     auth:AuthType
 }
 
-export type StoreType = {
-    _state?: StateType
-    getState: () => StateType
-    dispatch: (action: ActionTypes) => void
-    subscribe: (observer: () => void) => void
-    callSubscriber?: (_state: StateType) => void
-}
-
 let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     auth:authReducer
 });
+export type RootStateType = ReturnType<typeof store.getState>
+export type ReduxStore = typeof store
 
-
-export const store = legacy_createStore(rootReducer,applyMiddleware(thunkMiddleware));
+const store = legacy_createStore(rootReducer,applyMiddleware(thunkMiddleware));
 
 export default store;

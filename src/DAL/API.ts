@@ -27,11 +27,19 @@ export const profileAPI = {
     getUserProfile: (userId = 14933) => {
         return axiosInstance.get(`profile/` + userId)
             .then(response => response.data)
+    },
+    getUserStatus: (userId = 14933) => {
+        return axiosInstance.get(`/profile/status/${userId}`)
+            .then(response => response.data)
+    },
+    updateUserStatus: (status:string) => {
+        return axiosInstance.put(`/profile/status` , {status:status})
+            .then(response => response.data)
     }
 }
 
 export const authAPI = {
-    getUserData: (id: number, email: string, login: string) => {
+    getUserData: () => {
         return axiosInstance.get(`auth/me`).then(response => response.data)
     }
 }

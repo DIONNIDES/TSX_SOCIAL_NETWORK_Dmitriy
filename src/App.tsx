@@ -16,8 +16,8 @@ import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import {HeaderContainer} from './components/Header/HeaderContainer';
 import {Login} from './components/Content/Login/Login';
 
-
 function App() {
+
     return (
         <BrowserRouter>
             <div className={styles.App_wrapper}>

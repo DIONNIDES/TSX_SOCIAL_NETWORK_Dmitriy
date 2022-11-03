@@ -16,7 +16,7 @@ export type SetUsersType = ReturnType<typeof setUsers>;
 export type SetTotalCountType = ReturnType<typeof setTotalCount>;
 export type SetCurrentPageType = ReturnType<typeof setCurrentPage>;
 export type ToggleIsFetchingAC = ReturnType<typeof toggleIsFetching>;
-export type ToggleIsFollowingProgressAC = ReturnType<typeof toggleIsFollowingProgress>;
+export type ToggleIsFollowingProgressType = ReturnType<typeof toggleIsFollowingProgress>;
 
 
 let initialState = {

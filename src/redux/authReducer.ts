@@ -20,11 +20,14 @@ let initialState: AuthType = {
     isAuth: false
 }
 
+//id:14933,
+//     email:'',
+//     login:'DIONNIDES',
+//     isAuth: true
 
 export const authReducer = (state: AuthType = initialState, action: ActionTypes) => {
     switch (action.type) {
         case SET_USER_DATA: {
-            debugger
             return {
                 ...state,
                 ...action.payload,
@@ -36,11 +39,10 @@ export const authReducer = (state: AuthType = initialState, action: ActionTypes)
         }
 
     }
-
 }
 
 export const setUserData = (id: number, email: string, login: string) => {
-    return {
+        return {
         type: SET_USER_DATA,
         payload: {
             id,
@@ -50,10 +52,11 @@ export const setUserData = (id: number, email: string, login: string) => {
     } as const
 }
 //thunkCreator для запроса данных пользователя (аутентификация)
-export const requestUserData = (id: number, email: string, login: string) => (dispatch: Dispatch) => {
-    authAPI.getUserData(id, email, login).then(data=>{
+export const requestUserData = () => (dispatch: Dispatch) => {
+    authAPI.getUserData().then(data=>{
         let {id, email, login} = data.data;
         if (data.resultCode === 0) {
+            debugger
             dispatch(setUserData(id, email, login));
         }
     })

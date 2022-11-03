@@ -2,19 +2,21 @@ import {ActionTypes, ProfilePageType, UserInfoType} from './redux-store';
 import {v1} from 'uuid';
 import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
 import {Dispatch} from 'redux';
-import {profileAPI, usersAPI} from '../DAL/API';
-import {toggleIsFetching, toggleIsFollowingProgress, unfollowSuccess} from './usersReducer';
+import {profileAPI} from '../DAL/API';
+import {toggleIsFetching} from './usersReducer';
 
 export type AddPostType = ReturnType<typeof addPost>;//тип создания экшна для добавления поста
 export type UpdateNewPostTextType = ReturnType<typeof updateNewPostText>;//тип создания экшна для обновления текста поста
 export type UpdateNewPortfolioFieldTextType = ReturnType<typeof updateNewPortfolioFieldText>
 export type SetUserProfileType = ReturnType<typeof setUserProfile>
+export type SetUserStatusType = ReturnType<typeof setUserStatus>
 
 
 export const ADD_POST = 'ADD-POST';
 export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 export const UPDATE_NEW_PORTFOLIO_FIELD_TEXT = 'UPDATE-NEW-PORTFOLIO-FIELD-TEXT';
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';
+export const SET_USER_STATUS= 'SET_USER_STATUS';
 
 let initialState = {
     posts: [
@@ -25,7 +27,7 @@ let initialState = {
         {id: v1(), message: 'It`s my fifth post', time: '21:00', likes: 66},
     ] as Array<PostType>,
     newPostText: '' as string,
-    profileStatus: 'Its my first status' as string,
+    status: 'Its my first status' as string,
     usersCharacteristics: [
         {id: v1(), field: 'Name', fietldTitle: 'Dmitriy'},
         {id: v1(), field: 'Lastname', fietldTitle: 'Kurgan'},
@@ -53,7 +55,9 @@ let initialState = {
                     small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
                     large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
                 }*/
-    }
+    } as any
+
+
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
@@ -81,6 +85,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
             }
         case SET_USER_PROFILE:
             return {...state, profile: action.profile}
+
+        case SET_USER_STATUS:
+            return{...state,profileStatus:action.status}
         default:
             return state;
 
@@ -114,12 +121,35 @@ export const setUserProfile = (profile: any) => {
         profile
     } as const
 }
+
+export const setUserStatus = (status:string) =>{
+    return {
+        type:SET_USER_STATUS,
+        status
+    }as const
+}
+
 //thunkCreator для запроса и установки профиля пользователя
 export const requestUserProfile = (userID:number)=>(dispatch:Dispatch)=>{
     dispatch(toggleIsFetching(true));
     profileAPI.getUserProfile(userID).then(data => {
         dispatch(setUserProfile(data))
         dispatch(toggleIsFetching(false))
+    })
+}
+
+
+//thunkCreator для запроса и обновления статуса пользователя на сервере
+export const requestUserStatus = (userID:number)=>(dispatch:Dispatch)=>{
+    profileAPI.getUserStatus(userID).then(data => {
+        dispatch(setUserStatus(data))
+    })
+}
+
+//thunkCreator для запроса и установки статуса пользователя
+export const updateUserStatus = (status:string)=>(dispatch:Dispatch)=>{
+    profileAPI.updateUserStatus(status).then(data => {
+        if (data.resultCode ===0) dispatch(setUserStatus(status))
     })
 }
 
