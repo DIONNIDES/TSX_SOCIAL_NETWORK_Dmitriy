@@ -1,4 +1,4 @@
-import {ActionTypes, UsersPageType, UserType} from './redux-store';
+import {AppThunkType, UsersPageType, UserType} from './redux-store';
 import {Dispatch} from 'redux';
 import {usersAPI} from '../DAL/API';
 
@@ -18,17 +18,25 @@ export type SetCurrentPageType = ReturnType<typeof setCurrentPage>;
 export type ToggleIsFetchingAC = ReturnType<typeof toggleIsFetching>;
 export type ToggleIsFollowingProgressType = ReturnType<typeof toggleIsFollowingProgress>;
 
+export type UsersActionTypes =
+    FollowType
+    | UnfollowType
+    | SetUsersType
+    | SetTotalCountType
+    | SetCurrentPageType
+    | ToggleIsFetchingAC
+    | ToggleIsFollowingProgressType
 
 let initialState = {
     users: [] as Array<UserType>,
     totalCount: 0,
     pageSize: 10,
     currentPage: 1,
-    isFetching:false,
-    followingInProgress:[]
+    isFetching: false,
+    followingInProgress: []
 }
 
-export const usersReducer = (state: UsersPageType = initialState, action: ActionTypes) => {
+export const usersReducer = (state: UsersPageType = initialState, action: UsersActionTypes) => {
     switch (action.type) {
         case FOLLOW: {
             return {...state, users: state.users.map(u => u.id === action.payload.userID ? {...u, followed: true} : u)}
@@ -50,9 +58,11 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
             return {...state, isFetching: action.payload.isFetching}
         }
         case TOGGLE_IS_FOLLOWING_PROGRESS: {
-           return {...state, followingInProgress:action.payload.isFetching
-                   ?  [...state.followingInProgress, action.payload.userID]
-                   : state.followingInProgress.filter( userId => userId !== action.payload.userID)}
+            return {
+                ...state, followingInProgress: action.payload.isFetching
+                    ? [...state.followingInProgress, action.payload.userID]
+                    : state.followingInProgress.filter(userId => userId !== action.payload.userID)
+            }
         }
         default: {
             return state
@@ -116,7 +126,7 @@ export const toggleIsFetching = (isFetching: boolean) => {
     } as const
 }
 
-export const toggleIsFollowingProgress = (userID:number,isFetching: boolean) => {
+export const toggleIsFollowingProgress = (userID: number, isFetching: boolean) => {
     return {
         type: TOGGLE_IS_FOLLOWING_PROGRESS,
         payload: {
@@ -126,32 +136,30 @@ export const toggleIsFollowingProgress = (userID:number,isFetching: boolean) => 
     } as const
 }
 //thunkCreator для запроса с пользователями, возвращает нам санку
-export const requestUsers = (currentPage:number, pageSize:number) =>(dispatch:Dispatch) => {
+export const requestUsers = (currentPage: number, pageSize: number): AppThunkType => async dispatch => {
     dispatch(toggleIsFetching(true))
-    usersAPI.getUsers(currentPage, pageSize).then(data => {
-        dispatch(setUsers(data.items));
-        dispatch(setTotalCount(data.totalCount));
-        dispatch(toggleIsFetching(false))
-    })
+    let data = await usersAPI.getUsers(currentPage, pageSize)
+    dispatch(setUsers(data.items));
+    dispatch(setTotalCount(data.totalCount));
+    dispatch(toggleIsFetching(false));
 }
-//thunkCreator для добавления подписки, возвращает нам санку
-export const followUser = (userID:number) => (dispatch:Dispatch) =>{
-    dispatch(toggleIsFollowingProgress(userID, true));
-    usersAPI.followUser(userID).then(data => {
-        if (data.resultCode === 0) {
-            dispatch(followSuccess(userID));
-        }
-        dispatch(toggleIsFollowingProgress(userID, false));
-    })
 
-}
-//thunkCreator для удаления подписки, возвращает нам санку
-export const unfollowUser = (userID:number) =>(dispatch:Dispatch) => {
+//thunkCreator для добавления подписки, возвращает нам санку
+export const followUser = (userID: number): AppThunkType => async dispatch => {
     dispatch(toggleIsFollowingProgress(userID, true));
-    usersAPI.unfollowUser(userID).then(data => {
-        if (data.resultCode === 0) {
-            dispatch(unfollowSuccess(userID))
-        }
-        dispatch(toggleIsFollowingProgress(userID, false));
-    })
+    let data = await usersAPI.followUser(userID)
+    if (data.resultCode === 0) {
+        dispatch(followSuccess(userID));
+    }
+    dispatch(toggleIsFollowingProgress(userID, false));
+}
+
+//thunkCreator для удаления подписки, возвращает нам санку
+export const unfollowUser = (userID: number): AppThunkType => async dispatch => {
+    dispatch(toggleIsFollowingProgress(userID, true));
+    let data = await usersAPI.unfollowUser(userID)
+    if (data.resultCode === 0) {
+        dispatch(unfollowSuccess(userID))
+    }
+    dispatch(toggleIsFollowingProgress(userID, false));
 }

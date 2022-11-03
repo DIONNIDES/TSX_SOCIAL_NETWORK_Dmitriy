@@ -1,9 +1,11 @@
-import {ActionTypes, DialogsPageType} from './redux-store';
+import {DialogsPageType} from './redux-store';
 import {DialogType} from '../components/Content/Dialogs/Dialog/Dialog';
 import {MessageType} from '../components/Content/Dialogs/Message/Message';
 
 export type SendMessageType = ReturnType<typeof sendMessage>;//тип создания экшна для добавления сообщений
 export type UpdateNewMessageTextType = ReturnType<typeof updateNewMessageText>;//тип создания экшна для обновления текста сообщений
+
+export type DialogsActionTypes = SendMessageType | UpdateNewMessageTextType
 
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
@@ -72,7 +74,7 @@ let initialState = {
     newMessageText: '' as string,
 }
 
-export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionTypes) => {
     switch (action.type) {
         case SEND_MESSAGE:
             let newMessage = {

@@ -1,6 +1,7 @@
-import {ActionTypes} from './redux-store';
+
 import {Dispatch} from 'redux';
 import {authAPI} from '../DAL/API';
+import {AppThunkType} from './redux-store';
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
@@ -13,6 +14,8 @@ export type AuthType = {
     isAuth: boolean
 }
 
+export type AuthActionTypes = SetUserDataType
+
 let initialState: AuthType = {
     id: null,
     email: null,
@@ -20,12 +23,8 @@ let initialState: AuthType = {
     isAuth: false
 }
 
-//id:14933,
-//     email:'',
-//     login:'DIONNIDES',
-//     isAuth: true
 
-export const authReducer = (state: AuthType = initialState, action: ActionTypes) => {
+export const authReducer = (state: AuthType = initialState, action: AuthActionTypes) => {
     switch (action.type) {
         case SET_USER_DATA: {
             return {
@@ -52,12 +51,10 @@ export const setUserData = (id: number, email: string, login: string) => {
     } as const
 }
 //thunkCreator для запроса данных пользователя (аутентификация)
-export const requestUserData = () => (dispatch: Dispatch) => {
-    authAPI.getUserData().then(data=>{
+export const requestUserData = ():AppThunkType => async dispatch=> {
+    let data = await authAPI.getUserData()
         let {id, email, login} = data.data;
         if (data.resultCode === 0) {
-            debugger
             dispatch(setUserData(id, email, login));
         }
-    })
 }

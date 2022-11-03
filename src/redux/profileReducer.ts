@@ -1,4 +1,4 @@
-import {ActionTypes, ProfilePageType, UserInfoType} from './redux-store';
+import {AppThunkType, ProfilePageType, UserInfoType} from './redux-store';
 import {v1} from 'uuid';
 import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
 import {Dispatch} from 'redux';
@@ -7,16 +7,21 @@ import {toggleIsFetching} from './usersReducer';
 
 export type AddPostType = ReturnType<typeof addPost>;//тип создания экшна для добавления поста
 export type UpdateNewPostTextType = ReturnType<typeof updateNewPostText>;//тип создания экшна для обновления текста поста
-export type UpdateNewPortfolioFieldTextType = ReturnType<typeof updateNewPortfolioFieldText>
-export type SetUserProfileType = ReturnType<typeof setUserProfile>
-export type SetUserStatusType = ReturnType<typeof setUserStatus>
-
+export type UpdateNewPortfolioFieldTextType = ReturnType<typeof updateNewPortfolioFieldText>//тип создания экшна для обновления текста полей в портфолио
+export type SetUserProfileType = ReturnType<typeof setUserProfile>//тип создания экшна для установки профиля пользователя
+export type SetUserStatusType = ReturnType<typeof setUserStatus>//тип создания экшна для установки статуса пользователя
+export type ProfileActionTypes =
+    AddPostType
+    | UpdateNewPostTextType
+    | UpdateNewPortfolioFieldTextType
+    | SetUserProfileType
+    | SetUserStatusType
 
 export const ADD_POST = 'ADD-POST';
 export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 export const UPDATE_NEW_PORTFOLIO_FIELD_TEXT = 'UPDATE-NEW-PORTFOLIO-FIELD-TEXT';
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';
-export const SET_USER_STATUS= 'SET_USER_STATUS';
+export const SET_USER_STATUS = 'SET_USER_STATUS';
 
 let initialState = {
     posts: [
@@ -60,7 +65,7 @@ let initialState = {
 
 }
 
-export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
+export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionTypes) => {
 
     switch (action.type) {
 
@@ -87,7 +92,7 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
             return {...state, profile: action.profile}
 
         case SET_USER_STATUS:
-            return{...state,profileStatus:action.status}
+            return {...state, profileStatus: action.status}
         default:
             return state;
 
@@ -122,35 +127,32 @@ export const setUserProfile = (profile: any) => {
     } as const
 }
 
-export const setUserStatus = (status:string) =>{
+export const setUserStatus = (status: string) => {
     return {
-        type:SET_USER_STATUS,
+        type: SET_USER_STATUS,
         status
-    }as const
+    } as const
 }
 
 //thunkCreator для запроса и установки профиля пользователя
-export const requestUserProfile = (userID:number)=>(dispatch:Dispatch)=>{
+export const requestUserProfile = (userID: number): AppThunkType => async dispatch => {
     dispatch(toggleIsFetching(true));
-    profileAPI.getUserProfile(userID).then(data => {
-        dispatch(setUserProfile(data))
-        dispatch(toggleIsFetching(false))
-    })
+    let data = await profileAPI.getUserProfile(userID)
+    dispatch(setUserProfile(data))
+    dispatch(toggleIsFetching(false))
 }
 
 
 //thunkCreator для запроса и обновления статуса пользователя на сервере
-export const requestUserStatus = (userID:number)=>(dispatch:Dispatch)=>{
-    profileAPI.getUserStatus(userID).then(data => {
-        dispatch(setUserStatus(data))
-    })
+export const requestUserStatus = (userID: number): AppThunkType => async dispatch => {
+    let data = await profileAPI.getUserStatus(userID)
+    dispatch(setUserStatus(data))
 }
 
 //thunkCreator для запроса и установки статуса пользователя
-export const updateUserStatus = (status:string)=>(dispatch:Dispatch)=>{
-    profileAPI.updateUserStatus(status).then(data => {
-        if (data.resultCode ===0) dispatch(setUserStatus(status))
-    })
+export const updateUserStatus = (status: string): AppThunkType => async dispatch => {
+    let data = await profileAPI.updateUserStatus(status)
+    if (data.resultCode === 0) dispatch(setUserStatus(status))
 }
 
 
