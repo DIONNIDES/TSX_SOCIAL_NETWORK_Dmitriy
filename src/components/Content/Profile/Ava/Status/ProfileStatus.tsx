@@ -51,7 +51,7 @@ export class ProfileStatus extends Component<ProfileStatusType> {
                 }
                 {this.state.editMode &&
                     <div>
-                        <input onChange={this.setStatus} value={this.props.status} onBlur={this.deactivateEditMode} autoFocus/>
+                        <input onChange={this.setStatus} value={this.state.status} onBlur={this.deactivateEditMode} autoFocus/>
                     </div>
                 }
             </>
