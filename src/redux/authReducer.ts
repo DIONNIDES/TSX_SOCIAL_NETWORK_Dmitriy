@@ -1,5 +1,3 @@
-
-import {Dispatch} from 'redux';
 import {authAPI} from '../DAL/API';
 import {AppThunkType} from './redux-store';
 
@@ -29,8 +27,7 @@ export const authReducer = (state: AuthType = initialState, action: AuthActionTy
         case SET_USER_DATA: {
             return {
                 ...state,
-                ...action.payload,
-                isAuth: true
+                ...action.payload
             }
         }
         default: {
@@ -40,13 +37,14 @@ export const authReducer = (state: AuthType = initialState, action: AuthActionTy
     }
 }
 
-export const setUserData = (id: number, email: string, login: string) => {
+export const setUserData = (id: number|null, email: string|null, login: string|null, isAuth:boolean) => {
         return {
         type: SET_USER_DATA,
         payload: {
             id,
             email,
-            login
+            login,
+            isAuth
         }
     } as const
 }
@@ -55,6 +53,23 @@ export const requestUserData = ():AppThunkType => async dispatch=> {
     let data = await authAPI.getUserData()
         let {id, email, login} = data.data;
         if (data.resultCode === 0) {
-            dispatch(setUserData(id, email, login));
+            dispatch(setUserData(id, email, login, true));
         }
 }
+
+//thunkCreator для создания новой сессии авторизованного пользователя (авторизация)
+export const login = (email:string, password:string, rememberMe:boolean):AppThunkType =>async dispatch =>{
+   let response = await authAPI.login(email,password,rememberMe)
+        if (response.data.resultCode === 0){
+            dispatch(requestUserData());
+        }
+    }
+
+//thunkCreator для удаление сесси авторизованного поьзователя(вылогинивание)
+    export const logout = ():AppThunkType=> async dispatch =>{
+        let response = await authAPI.logout()
+        if (response.data.resultCode === 0){
+            dispatch(setUserData(null, null, null, false));
+        }
+    }
+

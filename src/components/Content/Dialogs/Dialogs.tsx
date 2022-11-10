@@ -3,12 +3,12 @@ import styles from './Dialogs.module.css';
 import {Dialog, DialogType} from './Dialog/Dialog';
 import {Message, MessageType} from './Message/Message';
 import {Button} from '../../common/Button/Button';
-import {Redirect} from 'react-router-dom';
+import {updateNewMessageText} from '../../../redux/dialogsReducer';
 
 
 type DialogsPropsType = {
     sendMessage:()=>void
-    updateNewMessagetext:(text:string)=>void
+    updateNewMessageText:(messageText:string)=>void
     newMessageText:string
     dialogs:Array<DialogType>
     messages:Array<MessageType>
@@ -19,8 +19,7 @@ type DialogsPropsType = {
 export const Dialogs = (props: DialogsPropsType) => {
 
     const onMessageChange = (e:ChangeEvent<HTMLInputElement>) => {
-        let text = e.currentTarget.value;
-            props.updateNewMessagetext(text);
+            props.updateNewMessageText(e.currentTarget.value);
 
     }
     const sendMessage = () => {
@@ -56,6 +55,7 @@ export const Dialogs = (props: DialogsPropsType) => {
 
                 {
                     props.messages.map(message => <Message
+                        key={message.id}
                         name={message.name}
                         lastName={message.lastName} lastData={message.lastData}
                         id={message.id} message={message.message} />

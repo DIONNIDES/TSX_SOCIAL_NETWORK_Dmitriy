@@ -26,6 +26,6 @@ const mapStateToProps = (state:StateType):MapStateToPropsType=>{
 };
 
 export const DialogsContainer =  compose<ComponentType> (
-    connect(mapStateToProps, {sendMessage,updateNewMessageText}),
-    wIthAuthRedirect
+    wIthAuthRedirect,
+    connect(mapStateToProps, {sendMessage,updateNewMessageText})
 )(Dialogs);

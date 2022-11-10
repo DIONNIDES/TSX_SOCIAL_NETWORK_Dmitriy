@@ -4,5 +4,17 @@
     display: grid;
     grid-template-columns: 1fr;
     margin: 0 auto;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-rows: 1fr 1fr 1fr;
+    font-size: 1.4em;
+}
+
+.formItem{
+    font-size: 1em;
+    height: 35px;
+}
+
+.submitButton{
+    width: 150px;
+    height: 40px;
 }

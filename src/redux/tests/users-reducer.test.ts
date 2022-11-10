@@ -1,21 +1,19 @@
-import {DialogType} from '../../components/Content/Dialogs/Dialog/Dialog';
-import {MessageType} from '../../components/Content/Dialogs/Message/Message';
-import {dialogsReducer, sendMessage, updateNewMessageText} from '../dialogsReducer';
 import {UserType} from '../redux-store';
-import {followUser, setUsers, unfollowUser, usersReducer} from '../usersReducer';
+import {followSuccess, setUsers, unfollowSuccess, usersReducer} from '../usersReducer';
 
 
-/*
 test('new followed status should be followed',()=>{
     let initialState = {
         users: [
         ] as Array<UserType>,
         totalCount: 0,
         pageSize: 5,
-        currentPage:1
+        currentPage:1,
+        isFetching: false,
+        followingInProgress: []
     }
 
-    const endState = usersReducer(initialState, followAC(1));
+    const endState = usersReducer(initialState, followSuccess(1));
 
     expect(initialState.users[0].followed).toBe(false);
     expect(endState.users[0].followed).toBe(true);
@@ -27,15 +25,16 @@ test('new followed status should be unfollowed',()=>{
         ] as Array<UserType>,
         totalCount: 0,
         pageSize: 5,
-        currentPage:1
+        currentPage:1,
+        isFetching: false,
+        followingInProgress: []
     }
 
-    const endState = usersReducer(initialState, unfollowAC(1));
+    const endState = usersReducer(initialState, unfollowSuccess(1));
 
     expect(initialState.users[0].followed).toBe(true);
     expect(endState.users[0].followed).toBe(false);
 })
-*/
 
 test('users should be added to state',()=>{
     let initialState = {

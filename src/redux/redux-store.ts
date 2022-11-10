@@ -7,6 +7,7 @@ import {ProfileActionTypes, profileReducer} from './profileReducer';
 import {DialogsActionTypes, dialogsReducer} from './dialogsReducer';
 import {UsersActionTypes, usersReducer} from './usersReducer';
 import {AuthActionTypes, authReducer, AuthType} from './authReducer';
+import {appReducer} from './appReducer';
 
 export type MainActionsType =
     ProfileActionTypes
@@ -76,7 +77,8 @@ let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
-    auth: authReducer
+    auth: authReducer,
+    app:appReducer
 });
 export type RootStateType = ReturnType<typeof store.getState>
 export type ReduxStore = typeof store

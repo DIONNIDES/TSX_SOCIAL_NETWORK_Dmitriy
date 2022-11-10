@@ -1,10 +1,10 @@
 import React from 'react';
-import {inspect} from 'util';
 import styles from './Button.module.css'
 
 export type PropsType = {
     disabled?:boolean
     className?:string
+    type?:string
     title:string;
     callback:()=>void
 }

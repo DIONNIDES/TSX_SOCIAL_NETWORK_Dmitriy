@@ -3,15 +3,23 @@ import styles from './Header.module.css';
 import user_logo from '../../asets/user_logo.png';
 import header_logo from './../../asets/header_logo.png';
 import {NavLink} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {logout} from '../../redux/authReducer';
 
 type HeaderPropsType = {
     id:null|number,
     email:null|string,
     login:null|string,
-    isAuth:boolean
+    isAuth:boolean,
+    logout:()=>void
+
 }
 
 export const Header = (props:HeaderPropsType) => {
+    const dispatch = useDispatch();
+    const logoutHandler = () =>{
+dispatch(logout())
+    }
     return (
         <div className={styles.Header_wrapper}>
             <div className={styles.Header_top}>
@@ -22,7 +30,7 @@ export const Header = (props:HeaderPropsType) => {
                     {props.isAuth ? <NavLink to={"/login"}>{props.login}</NavLink> : "Authorize please"}
                 </div>
                 <div className={styles.header_login}>
-                    {props.isAuth ?  <NavLink to={"/login"}><span>{props.login}</span></NavLink> : <NavLink to={"/login"}><span>Login</span></NavLink>}
+                    {props.isAuth ? <NavLink to={"/login"}><span onClick={logoutHandler}>Log out</span></NavLink> : <NavLink to={"/login"}><span >{props.login}</span></NavLink>}
                 </div>
             </div>
             <div className={styles.Header_bottom}>
