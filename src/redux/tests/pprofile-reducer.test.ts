@@ -18,7 +18,7 @@ test('new post should be added',()=>{
             {id: '5', message: 'It`s my fifth post', time: '21:00', likes: 66},
         ] as Array<PostType>,
         newPostText: '' as string,
-        status: 'Its my first status' as string,
+        profileStatus: 'Its my first status' as string,
         usersCharacteristics: [
             {id: '1', field: 'Name', fietldTitle: 'Dmitriy'},
             {id: '2', field: 'Lastname', fietldTitle: 'Kurgan'},
@@ -46,7 +46,7 @@ test('new post text should be changed',()=>{
             {id: '5', message: 'It`s my fifth post', time: '21:00', likes: 66},
         ] as Array<PostType>,
         newPostText: '' as string,
-        status: 'Its my first status' as string,
+        profileStatus: 'Its my first status' as string,
         usersCharacteristics: [
             {id: '1', field: 'Name', fietldTitle: 'Dmitriy'},
             {id: '2', field: 'Lastname', fietldTitle: 'Kurgan'},
@@ -74,7 +74,7 @@ test('new portfolio field text should be changed',()=>{
             {id: '5', message: 'It`s my fifth post', time: '21:00', likes: 66},
         ] as Array<PostType>,
         newPostText: '' as string,
-        status: 'Its my first status' as string,
+        profileStatus: 'Its my first status' as string,
         usersCharacteristics: [
             {id: '1', field: 'Name', fietldTitle: 'Dmitriy'},
             {id: '2', field: 'Lastname', fietldTitle: 'Kurgan'},

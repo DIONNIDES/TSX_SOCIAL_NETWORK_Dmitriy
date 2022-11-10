@@ -7,14 +7,14 @@ import {setUserStatus, updateUserStatus} from '../../../../redux/profileReducer'
 
 type MapStateToPropsType ={
     profile:any
-    status:string
+    profileStatus:string
 }
 
 
 const mapStateToProps = (state:StateType):MapStateToPropsType=>{
     return{
         profile:state.profilePage.profile,
-        status:state.profilePage.status
+        profileStatus:state.profilePage.profileStatus
     }
 }
 

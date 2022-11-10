@@ -54,7 +54,7 @@ export type UserInfoType = {
 
 export type ProfilePageType = {
     posts: Array<PostType>
-    status: string
+    profileStatus: string
     usersCharacteristics: Array<UserInfoType>
     newPostText: string
     profile: any

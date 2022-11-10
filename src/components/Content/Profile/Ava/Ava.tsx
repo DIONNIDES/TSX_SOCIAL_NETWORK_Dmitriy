@@ -2,11 +2,12 @@ import React from 'react';
 import styles from './Ava.module.css';
 import ava from './../../../../asets/user_post_ava.png';
 import {ProfileStatus} from './Status/ProfileStatus';
+import {ProfileStatusWithHooks} from './Status/ProfileStatusWithHooks';
 
 
 type AvaPropsType = {
     profile: any
-    status: string
+    profileStatus: string
     updateUserStatus: (status: string) => void
 }
 export const Ava = (props: AvaPropsType) => {
@@ -24,10 +25,12 @@ export const Ava = (props: AvaPropsType) => {
                     <div className={styles.main_status}>
                         <p>{props.profile.aboutMe}</p>
                     </div>
-                    <ProfileStatus
-                        status={props.status}
-                        updateUserStatus={props.updateUserStatus}
-                    />
+                   <ProfileStatusWithHooks status={props.profileStatus}
+                                           updateUserStatus={props.updateUserStatus} />
+                    {/*<ProfileStatus*/}
+                    {/*    status={props.profileStatus}*/}
+                    {/*    updateUserStatus={props.updateUserStatus}*/}
+                    {/*/>*/}
                 </div>
 
             </div>

@@ -32,7 +32,7 @@ let initialState = {
         {id: v1(), message: 'It`s my fifth post', time: '21:00', likes: 66},
     ] as Array<PostType>,
     newPostText: '' as string,
-    status: 'Its my first status' as string,
+    profileStatus: 'Its my first status' as string,
     usersCharacteristics: [
         {id: v1(), field: 'Name', fietldTitle: 'Dmitriy'},
         {id: v1(), field: 'Lastname', fietldTitle: 'Kurgan'},
