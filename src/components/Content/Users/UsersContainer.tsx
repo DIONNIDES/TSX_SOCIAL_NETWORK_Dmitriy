@@ -34,30 +34,6 @@ const mapStateToProps = (state: StateType): MapStateToPropsType => {
     }
 }
 
-/*const mapDispatchToProps =(dispatch:Dispatch):MapDispatchToPropsType=>{
-    return{
-        follow:(userID:number)=>{
-            dispatch(followAC(userID))
-        },
-        unfollow:(userID:number)=>{
-            dispatch(unfollowAC(userID));
-        },
-        setUsers:(users:Array<UserType>)=>{
-            dispatch(setUsersAC(users))
-        },
-        setTotalCount:(totalCount:number)=>{
-            dispatch(setTotalCountAC(totalCount))
-        },
-        setCurrentPage:(currentPage:number)=>{
-            dispatch(setCurrentPageAC(currentPage))
-        },
-        toggleIsFetching:(isFetching:boolean)=>{
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
-    }
-}*/
-
-
 export const UsersContainer = compose<ComponentType>(
     (connect(mapStateToProps, {
         followUser, unfollowUser, setUsers, setTotalCount,

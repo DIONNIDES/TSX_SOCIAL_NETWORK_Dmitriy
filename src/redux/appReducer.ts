@@ -1,6 +1,6 @@
 import {requestUserData} from './authReducer';
 
-const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+const INITIALIZED_SUCCESS = 'app/INITIALIZED_SUCCESS';
 
 export type InitializedSuccessActionType = ReturnType<typeof initializedSuccess>;
 

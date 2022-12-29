@@ -1,7 +1,6 @@
 import {AppThunkType, ProfilePageType, UserInfoType} from './redux-store';
 import {v1} from 'uuid';
 import {PostType} from '../components/Content/Profile/MyPosts/Post/Post';
-import {Dispatch} from 'redux';
 import {profileAPI} from '../DAL/API';
 import {toggleIsFetching} from './usersReducer';
 
@@ -17,11 +16,11 @@ export type ProfileActionTypes =
     | SetUserProfileType
     | SetUserStatusType
 
-export const ADD_POST = 'ADD-POST';
-export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-export const UPDATE_NEW_PORTFOLIO_FIELD_TEXT = 'UPDATE-NEW-PORTFOLIO-FIELD-TEXT';
-export const SET_USER_PROFILE = 'SET_USER_PROFILE';
-export const SET_USER_STATUS = 'SET_USER_STATUS';
+export const ADD_POST = 'profile/ADD-POST';
+export const UPDATE_NEW_POST_TEXT = 'profile/UPDATE-NEW-POST-TEXT';
+export const UPDATE_NEW_PORTFOLIO_FIELD_TEXT = 'profile/UPDATE-NEW-PORTFOLIO-FIELD-TEXT';
+export const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
+export const SET_USER_STATUS = 'profile/SET_USER_STATUS';
 
 let initialState = {
     posts: [

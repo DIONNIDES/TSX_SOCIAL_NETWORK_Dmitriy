@@ -1,7 +1,7 @@
 import {authAPI} from '../DAL/API';
 import {AppThunkType} from './redux-store';
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'auth/SET_USER_DATA';
 
 export type SetUserDataType = ReturnType<typeof setUserData>;
 
@@ -37,8 +37,8 @@ export const authReducer = (state: AuthType = initialState, action: AuthActionTy
     }
 }
 
-export const setUserData = (id: number|null, email: string|null, login: string|null, isAuth:boolean) => {
-        return {
+export const setUserData = (id: number | null, email: string | null, login: string | null, isAuth: boolean) => {
+    return {
         type: SET_USER_DATA,
         payload: {
             id,
@@ -49,27 +49,27 @@ export const setUserData = (id: number|null, email: string|null, login: string|n
     } as const
 }
 //thunkCreator для запроса данных пользователя (аутентификация)
-export const requestUserData = ():AppThunkType => async dispatch=> {
+export const requestUserData = (): AppThunkType => async dispatch => {
     let data = await authAPI.getUserData()
-        let {id, email, login} = data.data;
-        if (data.resultCode === 0) {
-            dispatch(setUserData(id, email, login, true));
-        }
+    let {id, email, login} = data.data;
+    if (data.resultCode === 0) {
+        dispatch(setUserData(id, email, login, true));
+    }
 }
 
 //thunkCreator для создания новой сессии авторизованного пользователя (авторизация)
-export const login = (email:string, password:string, rememberMe:boolean):AppThunkType =>async dispatch =>{
-   let response = await authAPI.login(email,password,rememberMe)
-        if (response.data.resultCode === 0){
-            dispatch(requestUserData());
-        }
+export const login = (email: string, password: string, rememberMe: boolean): AppThunkType => async dispatch => {
+    let response = await authAPI.login(email, password, rememberMe)
+    if (response.data.resultCode === 0) {
+        dispatch(requestUserData());
     }
+}
 
 //thunkCreator для удаление сесси авторизованного поьзователя(вылогинивание)
-    export const logout = ():AppThunkType=> async dispatch =>{
-        let response = await authAPI.logout()
-        if (response.data.resultCode === 0){
-            dispatch(setUserData(null, null, null, false));
-        }
+export const logout = (): AppThunkType => async dispatch => {
+    let response = await authAPI.logout()
+    if (response.data.resultCode === 0) {
+        dispatch(setUserData(null, null, null, false));
     }
+}
 

@@ -5,6 +5,16 @@ import {followSuccess, setUsers, unfollowSuccess, usersReducer} from '../usersRe
 test('new followed status should be followed',()=>{
     let initialState = {
         users: [
+            {
+                id: 1,
+                name: '',
+                photos: {
+                    small: null,
+                    large: null
+                },
+                followed: false
+            }
+
         ] as Array<UserType>,
         totalCount: 0,
         pageSize: 5,
@@ -22,6 +32,15 @@ test('new followed status should be followed',()=>{
 test('new followed status should be unfollowed',()=>{
     let initialState = {
         users: [
+            {
+                id: 1,
+                name: '',
+                photos: {
+                    small: null,
+                    large: null
+                },
+                followed: true
+            }
         ] as Array<UserType>,
         totalCount: 0,
         pageSize: 5,

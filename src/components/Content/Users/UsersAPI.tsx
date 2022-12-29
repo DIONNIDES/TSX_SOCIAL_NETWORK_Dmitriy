@@ -2,7 +2,6 @@ import React from 'react';
 import {UserType} from '../../../redux/redux-store';
 import {Users} from './Users';
 import {Preloader} from '../../common/Preloader/Preloader';
-import {followUser, unfollowUser} from '../../../redux/usersReducer';
 
 
 export type PropsType = {
@@ -19,7 +18,7 @@ export type PropsType = {
     toggleIsFetching: (isFetching: boolean) => void
     followingInProgress: Array<number>
     toggleIsFollowingProgress: (userID: number, isFetching: boolean) => void
-    requestUsers:(currentPage:number,pageSize:number)=>void
+    requestUsers: (currentPage: number, pageSize: number) => void
 }
 
 export class UsersAPI extends React.Component<PropsType, any> {
@@ -33,7 +32,7 @@ export class UsersAPI extends React.Component<PropsType, any> {
         const onCurrentPageHandler = (page: number) => {
             this.props.setCurrentPage(page)
             this.props.requestUsers(page, this.props.pageSize);
-            }
+        }
 
 
         return (
@@ -43,12 +42,9 @@ export class UsersAPI extends React.Component<PropsType, any> {
                     users={this.props.users}
                     followUser={this.props.followUser}
                     unfollowUser={this.props.unfollowUser}
-                    setUsers={this.props.setUsers}
                     totalCount={this.props.totalCount}
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
-                    setTotalCount={this.props.setTotalCount}
-                    setCurrentPage={this.props.setCurrentPage}
                     onCurrentPageHandler={onCurrentPageHandler}
                     isFetching={this.props.isFetching}
                     toggleIsFetching={this.props.toggleIsFetching}
