@@ -51,6 +51,7 @@ export const Users: React.FC<PropsType> = ({
                            pageSize={pageSize}
                            currentPage={currentPage}
                            onCurrentPageHandler={onCurrentPageHandler}
+                           portionSize={10}
                 />
                 {mappedUsers.length > 0
                     ? mappedUsers
