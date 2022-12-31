@@ -13,12 +13,13 @@ export type PropsType = {
     pageSize: number
     currentPage: number
     setTotalCount: (totalCount: number) => void
-    setCurrentPage: (currentPage: number) => void
+    setCurrentPage:(page: number,portionNumber:number) => void
     isFetching: boolean
     toggleIsFetching: (isFetching: boolean) => void
     followingInProgress: Array<number>
     toggleIsFollowingProgress: (userID: number, isFetching: boolean) => void
     requestUsers: (currentPage: number, pageSize: number) => void
+    portion:number
 }
 
 export class UsersAPI extends React.Component<PropsType, any> {
@@ -29,8 +30,8 @@ export class UsersAPI extends React.Component<PropsType, any> {
 
     render() {
 
-        const onCurrentPageHandler = (page: number) => {
-            this.props.setCurrentPage(page)
+        const onCurrentPageHandler = (page: number, portionNumber:number) => {
+            this.props.setCurrentPage(page, portionNumber)
             this.props.requestUsers(page, this.props.pageSize);
         }
 
@@ -50,6 +51,7 @@ export class UsersAPI extends React.Component<PropsType, any> {
                     toggleIsFetching={this.props.toggleIsFetching}
                     followingInProgress={this.props.followingInProgress}
                     toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
+                    portion={this.props.portion}
                 />
             }
             </>

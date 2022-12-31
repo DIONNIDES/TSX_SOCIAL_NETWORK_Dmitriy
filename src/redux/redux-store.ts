@@ -43,6 +43,7 @@ export type UsersPageType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: Array<number>
+    portion:number
 }
 
 export type UserInfoType = {

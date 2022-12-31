@@ -20,7 +20,8 @@ test('new followed status should be followed',()=>{
         pageSize: 5,
         currentPage:1,
         isFetching: false,
-        followingInProgress: []
+        followingInProgress: [],
+        portion:1
     }
 
     const endState = usersReducer(initialState, followSuccess(1));
@@ -46,7 +47,8 @@ test('new followed status should be unfollowed',()=>{
         pageSize: 5,
         currentPage:1,
         isFetching: false,
-        followingInProgress: []
+        followingInProgress: [],
+        portion:1
     }
 
     const endState = usersReducer(initialState, unfollowSuccess(1));
@@ -63,7 +65,8 @@ test('users should be added to state',()=>{
         pageSize: 5,
         currentPage:1,
         isFetching:false,
-        followingInProgress: []
+        followingInProgress: [],
+        portion:1
     }
     const endState = usersReducer(initialState, setUsers([{id:11, name:'Dima', followed:false, photos:'none', userStatus:'status', wasOnline:'11111'}]));
 

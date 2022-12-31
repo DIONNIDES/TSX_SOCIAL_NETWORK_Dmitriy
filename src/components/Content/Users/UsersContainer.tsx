@@ -21,16 +21,19 @@ type MapStateToPropsType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: Array<number>
+    portion:number
 }
 
 const mapStateToProps = (state: StateType): MapStateToPropsType => {
+    debugger
     return {
         users: state.usersPage.users,
         totalCount: state.usersPage.totalCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress,
+        portion:state.usersPage.portion
     }
 }
 

@@ -12,11 +12,12 @@ export type PropsType = {
     totalCount: number
     pageSize: number
     currentPage: number
-    onCurrentPageHandler: (page: number) => void
+    onCurrentPageHandler: (page: number,portionNumber:number) => void
     isFetching: boolean
     toggleIsFetching: (isFetching: boolean) => void
     followingInProgress: Array<number>
     toggleIsFollowingProgress: (userID: number, isFetching: boolean) => void
+    portion:number
 }
 
 export const Users: React.FC<PropsType> = ({
@@ -29,6 +30,7 @@ export const Users: React.FC<PropsType> = ({
                                                onCurrentPageHandler,
                                                isFetching,
                                                followingInProgress,
+                                               portion,
                                                ...restProps
 }) => {
 
@@ -52,6 +54,7 @@ export const Users: React.FC<PropsType> = ({
                            currentPage={currentPage}
                            onCurrentPageHandler={onCurrentPageHandler}
                            portionSize={10}
+                           portion={portion}
                 />
                 {mappedUsers.length > 0
                     ? mappedUsers

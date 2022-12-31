@@ -33,7 +33,8 @@ let initialState = {
     pageSize: 10,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: []
+    followingInProgress: [],
+    portion:2
 }
 
 export const usersReducer = (state: UsersPageType = initialState, action: UsersActionTypes) => {
@@ -52,7 +53,7 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
             return {...state, totalCount: action.payload.totalCount}
         }
         case SET_CURRENT_PAGE: {
-            return {...state, currentPage: action.payload.currentPage}
+            return {...state, currentPage: action.payload.currentPage, portion:action.payload.portion}
         }
         case TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.payload.isFetching}
@@ -108,11 +109,12 @@ export const setTotalCount = (totalCount: number) => {
     } as const
 }
 
-export const setCurrentPage = (currentPage: number) => {
+export const setCurrentPage = (currentPage: number, portion:number) => {
     return {
         type: SET_CURRENT_PAGE,
         payload: {
-            currentPage
+            currentPage,
+            portion
         }
     } as const
 }
