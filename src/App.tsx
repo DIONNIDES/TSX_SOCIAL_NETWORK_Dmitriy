@@ -54,7 +54,7 @@ class App extends React.Component<AppPropsType, any> {
                         <Route path="/users" render={withSuspense(UsersContainer)}/>
                         <Route path="/friends" render={withSuspense(MyFriends)}/>
                         <Route path="/gallery" render={withSuspense(Gallery)}/>
-                        <Route path="/videos" render={() => <Videos/>}/>
+                        <Route path="/videos" render={withSuspense(Videos)}/>
                         <Route path="/projects" render={withSuspense(MyProjects)}/>
                         <Route path="/groups" render={withSuspense(MyGroups)}/>
                         <Route path="/music" render={withSuspense(MyMusic)}/>
