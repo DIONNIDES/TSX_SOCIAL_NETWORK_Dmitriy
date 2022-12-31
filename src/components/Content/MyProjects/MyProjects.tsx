@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './MyProjects.module.css';
 
-export const MyProjects = () => {
+const MyProjects = () => {
     return (
         <div>
             My projects
@@ -9,3 +9,4 @@ export const MyProjects = () => {
     );
 };
 
+export default MyProjects;

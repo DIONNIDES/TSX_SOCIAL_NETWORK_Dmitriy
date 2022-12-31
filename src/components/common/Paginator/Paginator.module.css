@@ -1,3 +1,7 @@
+.mainWrapper{
+ margin: 0 auto;
+}
+
 .paginatorWrapper{
     display: grid;
     grid-template-columns: 100px 1fr 100px;

@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './Gallery.module.css';
 
-export const Gallery = () => {
+ const Gallery = () => {
     return (
         <div>
             Gallery
         </div>
     );
 };
+
+ export default Gallery;

@@ -74,7 +74,7 @@ export const mapStateToProps = (state: RootStateType) => {
     }
 }
 
-export default connect(mapStateToProps, {login})(Login);
+export const LoginContainer =  connect(mapStateToProps, {login})(Login);
 
 
 

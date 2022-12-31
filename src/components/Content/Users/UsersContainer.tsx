@@ -37,7 +37,7 @@ const mapStateToProps = (state: StateType): MapStateToPropsType => {
     }
 }
 
-export const UsersContainer = compose<ComponentType>(
+const UsersContainer = compose<ComponentType>(
     (connect(mapStateToProps, {
         followUser, unfollowUser, setUsers, setTotalCount,
         setCurrentPage, toggleIsFetching, toggleIsFollowingProgress,
@@ -45,3 +45,5 @@ export const UsersContainer = compose<ComponentType>(
     })),
     wIthAuthRedirect
 )(UsersAPI);
+
+export default UsersContainer;

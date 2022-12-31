@@ -7,9 +7,9 @@ type PaginatorPropsType = {
     totalCount: number
     pageSize: number
     currentPage: number
-    onCurrentPageHandler: (currentPage: number, portionNumber:number) => void
+    onCurrentPageHandler: (currentPage: number, portionNumber: number) => void
     portionSize: number
-    portion:number
+    portion: number
 }
 export const Paginator: React.FC<PaginatorPropsType> = ({
                                                             totalCount,
@@ -31,43 +31,44 @@ export const Paginator: React.FC<PaginatorPropsType> = ({
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    return (<div className={styles.paginatorWrapper}>
-            {portionNumber > 1
-                ? <div>
-                    <Button title={'<<'} callback={() => {
-                        setPortionNumber(1)
-                    }}/>
-                    <Button title={'<<<'} callback={() => {
-                        setPortionNumber(portionNumber - 1)
-                    }}/>
-                </div>
+    return (<div className={styles.mainWrapper}>
+            <div className={styles.paginatorWrapper}>
+                {portionNumber > 1
+                    ? <div>
+                        <Button title={'<<'} callback={() => {
+                            setPortionNumber(1)
+                        }}/>
+                        <Button title={'<<<'} callback={() => {
+                            setPortionNumber(portionNumber - 1)
+                        }}/>
+                    </div>
 
-                : <div>
-                    <div></div>
-                    <div></div>
+                    : <div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                }
+                <div className={styles.paginatorWrap}>
+                    {pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+                        .map(p => <Button className={p === currentPage ? pageStyles.currentPage : ''}
+                                          title={p.toString()}
+                                          callback={() => onCurrentPageHandler(p, portionNumber)}/>)}
                 </div>
-            }
-            <div className={styles.paginatorWrap}>
-                {pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                    .map(p => <Button className={p === currentPage ? pageStyles.currentPage : ''}
-                                      title={p.toString()} callback={() => onCurrentPageHandler(p,portionNumber)}/>)}
+                {portionCount > portionNumber
+                    ? <div>
+                        <Button title={'>>>'} callback={() => {
+                            setPortionNumber(portionNumber + 1)
+                        }}/>
+                        <Button title={'>>'} callback={() => {
+                            setPortionNumber(portionCount)
+                        }}/>
+                    </div>
+                    : <div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                }
             </div>
-            {portionCount > portionNumber
-                ? <div>
-                    <Button title={'>>>'} callback={() => {
-                        setPortionNumber(portionNumber + 1)
-                    }}/>
-                    <Button title={'>>'} callback={() => {
-                        setPortionNumber(portionCount)
-                    }}/>
-                </div>
-                : <div>
-                    <div></div>
-                    <div></div>
-                </div>
-            }
         </div>
-
-
     );
 }

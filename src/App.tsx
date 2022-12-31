@@ -3,23 +3,27 @@ import styles from './App.module.css';
 import {Navbar} from './components/Navbar/Navbar';
 import {Footer} from './components/Footer/Footer';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {MyFriends} from './components/Content/MyFriends/MyFriends';
-import {MyProjects} from './components/Content/MyProjects/MyProjects';
-import {Gallery} from './components/Content/Gallery/Gallery';
-import {MyMusic} from './components/Content/MyMusic/MyMusic';
-import {Settings} from './components/Content/Settings/Settings';
-import {Videos} from './components/Content/Videos/Videos';
-import {MyGroups} from './components/Content/MyGroups/MyGroups';
-import {DialogsContainer} from './components/Content/Dialogs/DialogsContainer';
-import {UsersContainer} from './components/Content/Users/UsersContainer';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import {HeaderContainer} from './components/Header/HeaderContainer';
-import Login from './components/Content/Login/Login';
+import {LoginContainer} from './components/Content/Login/Login';
 import {connect, Provider} from 'react-redux';
 import {compose} from 'redux';
 import store, {RootStateType} from './redux/redux-store';
 import {initializeApp} from './redux/appReducer';
 import {Preloader} from './components/common/Preloader/Preloader';
+import {withSuspense} from './components/common/utils/withSuspense';
+
+// lazy loading for fast app start
+const DialogsContainer = React.lazy(() => import('./components/Content/Dialogs/DialogsContainer'));
+const UsersContainer = React.lazy(() => import('./components/Content/Users/UsersContainer'));
+const MyFriends = React.lazy(() => import('./components/Content/MyFriends/MyFriends'));
+const MyProjects = React.lazy(() => import('./components/Content/MyProjects/MyProjects'));
+const Gallery = React.lazy(() => import('./components/Content/Gallery/Gallery'));
+const MyMusic = React.lazy(() => import('./components/Content/MyMusic/MyMusic'));
+const Settings = React.lazy(() => import('./components/Content/Settings/Settings'));
+const Videos = React.lazy(() => import('./components/Content/Videos/Videos'));
+const MyGroups = React.lazy(() => import('./components/Content/MyGroups/MyGroups'));
+
 
 type MapStateToPropsType = ReturnType<typeof mapStateToProps>
 
@@ -46,16 +50,16 @@ class App extends React.Component<AppPropsType, any> {
                     <Navbar/>
                     <div className={styles.Main_wrapper}>
                         <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                        <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                        <Route path="/users" render={() => <UsersContainer/>}/>
-                        <Route path="/friends" render={() => <MyFriends/>}/>
-                        <Route path="/gallery" render={() => <Gallery/>}/>
+                        <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
+                        <Route path="/users" render={withSuspense(UsersContainer)}/>
+                        <Route path="/friends" render={withSuspense(MyFriends)}/>
+                        <Route path="/gallery" render={withSuspense(Gallery)}/>
                         <Route path="/videos" render={() => <Videos/>}/>
-                        <Route path="/projects" render={() => <MyProjects/>}/>
-                        <Route path="/groups" render={() => <MyGroups/>}/>
-                        <Route path="/music" render={() => <MyMusic/>}/>
-                        <Route path="/settings" render={() => <Settings/>}/>
-                        <Route path="/login" render={() => <Login/>}/>
+                        <Route path="/projects" render={withSuspense(MyProjects)}/>
+                        <Route path="/groups" render={withSuspense(MyGroups)}/>
+                        <Route path="/music" render={withSuspense(MyMusic)}/>
+                        <Route path="/settings" render={withSuspense(Settings)}/>
+                        <Route path="/login" render={() => <LoginContainer/>}/>
                     </div>
                     <Footer/>
                 </div>
