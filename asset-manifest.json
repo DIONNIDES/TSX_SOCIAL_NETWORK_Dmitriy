@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/main.abb149d2.css",
+    "main.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/main.4f6b7629.js",
+    "static/css/485.2774d70a.chunk.css": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/485.2774d70a.chunk.css",
+    "static/js/485.32e61e97.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/485.32e61e97.chunk.js",
+    "static/css/788.c58a1237.chunk.css": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/788.c58a1237.chunk.css",
+    "static/js/788.5e2f6283.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/788.5e2f6283.chunk.js",
+    "static/js/224.748469cb.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/224.748469cb.chunk.js",
+    "static/js/60.c13f0dc0.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/60.c13f0dc0.chunk.js",
+    "static/js/46.a5ccdacb.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/46.a5ccdacb.chunk.js",
+    "static/js/574.2b5339c2.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/574.2b5339c2.chunk.js",
+    "static/js/138.64bfbe5b.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/138.64bfbe5b.chunk.js",
+    "static/js/257.9fe3468b.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/257.9fe3468b.chunk.js",
+    "static/js/382.581968c9.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/382.581968c9.chunk.js",
+    "static/media/my_photo.png": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/my_photo.77afc3a6377ae842e301.png",
+    "static/media/background_image2.jpg": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/background_image2.f02ebad057126fe71b73.jpg",
+    "static/media/user_post_ava.png": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/user_post_ava.e8ac51ee6eaf9d909c7f.png",
+    "static/media/like_icon.png": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/like_icon.0fc644a9ebfa15fe4773.png",
+    "static/media/usersInitialAva.jpg": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/usersInitialAva.bc8cb6f249b5e07bbaba.jpg",
+    "static/media/user_logo.png": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/user_logo.9dc92b0a1003b149f6c9.png",
+    "static/media/header_logo.png": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/header_logo.d11ab108e8a6c3a9dafb.png",
+    "index.html": "/TSX_SOCIAL_NETWORK_Dmitriy/index.html",
+    "main.abb149d2.css.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/main.abb149d2.css.map",
+    "main.4f6b7629.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/main.4f6b7629.js.map",
+    "485.2774d70a.chunk.css.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/485.2774d70a.chunk.css.map",
+    "485.32e61e97.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/485.32e61e97.chunk.js.map",
+    "788.c58a1237.chunk.css.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/788.c58a1237.chunk.css.map",
+    "788.5e2f6283.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/788.5e2f6283.chunk.js.map",
+    "224.748469cb.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/224.748469cb.chunk.js.map",
+    "60.c13f0dc0.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/60.c13f0dc0.chunk.js.map",
+    "46.a5ccdacb.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/46.a5ccdacb.chunk.js.map",
+    "574.2b5339c2.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/574.2b5339c2.chunk.js.map",
+    "138.64bfbe5b.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/138.64bfbe5b.chunk.js.map",
+    "257.9fe3468b.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/257.9fe3468b.chunk.js.map",
+    "382.581968c9.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/382.581968c9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abb149d2.css",
+    "static/js/main.4f6b7629.js"
+  ]
+}
