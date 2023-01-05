@@ -6,7 +6,8 @@ test('Users data should correct updated',()=>{
         id: null,
         email: null,
         login: null,
-        isAuth: false
+        isAuth: false,
+        captcha:null
     }
 
     const endState = authReducer(initialState, setUserData(14933, 'dimakurgan123789@gmail.com', 'DIONNIDES', true));

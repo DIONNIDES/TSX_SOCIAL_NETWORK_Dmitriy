@@ -44,7 +44,7 @@ class App extends React.Component<AppPropsType, any> {
         }
 
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <div className={styles.App_wrapper}>
                     <HeaderContainer/>
                     <Navbar/>
@@ -74,13 +74,13 @@ const mapStateToProps = (state: RootStateType) => {
     }
 }
 
-let AppContainer =  compose(
+let AppContainer = compose(
     connect(mapStateToProps, {initializeApp}))(App)
 
-export let SamuraiJsApp = ()=>{
+export let SamuraiJsApp = () => {
     return (
         <Provider store={store}>
-            <AppContainer />
+            <AppContainer/>
         </Provider>
     )
 }

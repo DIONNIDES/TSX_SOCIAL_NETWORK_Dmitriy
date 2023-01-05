@@ -1,0 +1,26 @@
+.updateProfileFormWrapper{
+    display: grid;
+    grid-template-areas:
+            'label input'
+            'label input'
+            'label input'
+            'label input'
+            'label input'
+            'label input'
+            'label input'
+            'label input'
+            'label input'
+    'button button';
+    padding: 10px;
+}
+
+.formInput{
+    grid-area: input;
+}
+.formLabel{
+    grid-area: label;
+}
+
+.formButton{
+    grid-area: button;
+}

@@ -29,13 +29,19 @@
     border-radius: 2rem;
     text-align: center;
     border: 2px solid black;
-
+    height: max-content;
 }
 
 h1{
     font-size: 2.5rem;
 }
 
+.main_profile_data {
+   max-width: 500px;
+    max-height: max-content;
+}
+
 .main_status p {
-    font-size: 2rem;
+    font-size: 1.2rem;
+    word-break: break-all;
 }

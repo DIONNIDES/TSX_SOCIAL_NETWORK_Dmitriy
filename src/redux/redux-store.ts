@@ -21,11 +21,6 @@ export type LocationType = {
     city: string
 }
 
-export type PhotosType = {
-    small?: string | undefined
-    large?: string | undefined
-}
-
 export type UserType = {
     id: number
     photos: any

@@ -6,24 +6,25 @@ import {connect} from 'react-redux';
 import {login} from '../../../redux/authReducer';
 import {Redirect} from 'react-router-dom';
 import {RootStateType} from '../../../redux/redux-store';
-import {createField} from './form-helpers';
+import {createField} from '../../common/utils/form-helpers';
 
 export type FormikErrorsType = {
     email?: string
     password?: string
     rememberMe?: boolean
-    capcha?: string
+    captcha?: string | null
 }
 
 export type MapStateToPropsType = {
     isAuth: boolean
+    captcha: string | null
 }
 
 type LoginPropsType = MapStateToPropsType & {
-    login: (email: string, password: string, rememberMe: boolean) => void
+    login: (email: string, password: string, rememberMe: boolean, captcha: string | null) => void
 }
 
-const Login = (props: LoginPropsType) => {
+const Login = ({isAuth, captcha, login}: LoginPropsType) => {
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -31,7 +32,7 @@ const Login = (props: LoginPropsType) => {
             rememberMe: false
         },
         onSubmit: values => {
-            props.login(values.email, values.password, values.rememberMe);
+            login(values.email, values.password, values.rememberMe, captcha);
         },
         validate: (values) => {
             const errors: FormikErrorsType = {}
@@ -50,7 +51,7 @@ const Login = (props: LoginPropsType) => {
 
     });
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={'/profile'}/>
     }
     return (
@@ -63,18 +64,22 @@ const Login = (props: LoginPropsType) => {
             <div>
                 {createField('rememberMe', 'checkbox', formik)}
             </div>
+            {captcha && <img src={captcha}/>}
+            {captcha && createField('captchaURL', 'text', formik)}
             <Button type={'submit'} title={'Login'} callback={() => {
             }} className={styles.submitButton}/>
         </form>
     );
 };
 export const mapStateToProps = (state: RootStateType) => {
+    debugger
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captcha: state.auth.captcha
     }
 }
 
-export const LoginContainer =  connect(mapStateToProps, {login})(Login);
+export const LoginContainer = connect(mapStateToProps, {login})(Login);
 
 
 

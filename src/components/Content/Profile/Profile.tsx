@@ -4,14 +4,14 @@ import {MyPostsContainer} from './MyPosts/MyPostsContainer';
 import {AvaContainer} from './Ava/AvaContainer';
 import {DescriptionContainer} from './Description/DescriptionContainer';
 
-export type ProfilePropsType = {
-    profile:any
+type ProfilePropsType = {
+    isOwner:boolean
 }
 
-export const Profile = (props:ProfilePropsType) => {
+export const Profile = ({isOwner}:ProfilePropsType) => {
     return (
         <div className={styles.profile_wrapper}>
-            <AvaContainer />
+            <AvaContainer isOwner={isOwner} />
             <DescriptionContainer />
             <MyPostsContainer
             />

@@ -2,17 +2,20 @@ import React from 'react';
 import {StateType} from '../../../../redux/redux-store';
 import {Ava} from './Ava';
 import {connect} from 'react-redux';
-import {setUserStatus, updateUserStatus} from '../../../../redux/profileReducer';
+import {setUserPhoto, setUserStatus, updateUserProfile, updateUserStatus} from '../../../../redux/profileReducer';
+import {UpdatedProfileType} from '../../../../DAL/API';
 
 
 type MapStateToPropsType ={
-    profile:any
+    profile:UpdatedProfileType
     profileStatus:string
+    userID:number |null
 }
 
 
 const mapStateToProps = (state:StateType):MapStateToPropsType=>{
     return{
+        userID:state.auth.id,
         profile:state.profilePage.profile,
         profileStatus:state.profilePage.profileStatus
     }
@@ -20,4 +23,5 @@ const mapStateToProps = (state:StateType):MapStateToPropsType=>{
 
 
 
-export const AvaContainer = connect(mapStateToProps, {setUserStatus,updateUserStatus})(Ava);
+export const AvaContainer = connect(mapStateToProps,
+    {setUserStatus,updateUserStatus,setUserPhoto,updateUserProfile})(Ava);
