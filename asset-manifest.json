@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/main.abb149d2.css",
-    "main.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/main.2ea1a562.js",
+    "main.css": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/main.aa306f18.css",
+    "main.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/main.b3ffe526.js",
     "static/css/485.2774d70a.chunk.css": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/485.2774d70a.chunk.css",
     "static/js/485.32e61e97.chunk.js": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/485.32e61e97.chunk.js",
     "static/css/788.c58a1237.chunk.css": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/788.c58a1237.chunk.css",
@@ -21,8 +21,8 @@
     "static/media/user_logo.png": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/user_logo.9dc92b0a1003b149f6c9.png",
     "static/media/header_logo.png": "/TSX_SOCIAL_NETWORK_Dmitriy/static/media/header_logo.d11ab108e8a6c3a9dafb.png",
     "index.html": "/TSX_SOCIAL_NETWORK_Dmitriy/index.html",
-    "main.abb149d2.css.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/main.abb149d2.css.map",
-    "main.2ea1a562.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/main.2ea1a562.js.map",
+    "main.aa306f18.css.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/main.aa306f18.css.map",
+    "main.b3ffe526.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/main.b3ffe526.js.map",
     "485.2774d70a.chunk.css.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/485.2774d70a.chunk.css.map",
     "485.32e61e97.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/485.32e61e97.chunk.js.map",
     "788.c58a1237.chunk.css.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/css/788.c58a1237.chunk.css.map",
@@ -36,7 +36,7 @@
     "382.581968c9.chunk.js.map": "/TSX_SOCIAL_NETWORK_Dmitriy/static/js/382.581968c9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.abb149d2.css",
-    "static/js/main.2ea1a562.js"
+    "static/css/main.aa306f18.css",
+    "static/js/main.b3ffe526.js"
   ]
 }
