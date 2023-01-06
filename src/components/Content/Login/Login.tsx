@@ -56,7 +56,16 @@ const Login = ({isAuth, captcha, login}: LoginPropsType) => {
     }
     return (
         <form onSubmit={formik.handleSubmit} className={styles.loginFormWrapper}>
-
+            <div>
+                <p>To log in get registered
+                    <a href={'https://social-network.samuraijs.com/'}
+                       target={'_blank'}> here
+                    </a>
+                </p>
+                <p>or use common test account credentials:</p>
+                <p>Email: free@samuraijs.com</p>
+                <p>Password: free</p>
+            </div>
             {createField('email', 'email', formik)}
             {formik.touched.email && formik.errors.email && <div>{formik.errors.email}</div>}
             {createField('password', 'password', formik)}
